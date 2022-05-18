@@ -1,0 +1,1 @@
+add_library(def INTERFACE Interface.h MainMenu.h)
