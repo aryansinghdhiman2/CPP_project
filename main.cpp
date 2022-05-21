@@ -1,9 +1,37 @@
 #include <iostream>
+#include <iomanip>
 #include "include/MainMenu.h"
+#include "src/club_menu_initiator.cpp"
+#include "src/event_menu_initiator.cpp"
+#include "src/admin_menu_initiator.cpp"
 
+using namespace std;
 
 int main() {
-    std::cout << "Hello, world!\n";
+    
     MainMenu menu;
+    char input;
     menu.display();
+    for (;;)
+    {
+        cin >> input;
+
+        switch (input)
+        {
+        case '1':
+            club_menu_initiator();
+            break;
+        case '2':
+            event_menu_initiator();
+            break;
+        case '0':
+            admin_menu_initiator();
+            break;
+        case 'q':
+        case 'Q':
+            return 0;
+        default:
+            cout<<"Invalid Input";
+        }
+    }
 }
