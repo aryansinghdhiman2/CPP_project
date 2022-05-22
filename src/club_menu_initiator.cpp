@@ -1,11 +1,14 @@
+#ifndef _CLUB_MENU_INITIATOR_
+
+#define _CLUB_MENU_INITIATOR_
+
 #include <iostream>
 #include "../include/ClubMenu.h"
 
 void club_menu_initiator()
 {
-    system("cls");
-
     ClubMenu menu;
+    menu.clear();
     menu.display();
     //char input;
     //bool should_quit=0;
@@ -37,3 +40,5 @@ void club_menu_initiator()
     } */
     
 }
+
+#endif

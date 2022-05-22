@@ -1,9 +1,12 @@
 #include <iostream>
 #include <iomanip>
+#include <fstream>
+#include <string>
 #include "include/MainMenu.h"
 #include "src/club_menu_initiator.cpp"
 #include "src/event_menu_initiator.cpp"
 #include "src/admin_menu_initiator.cpp"
+#include "include/Event.h"
 
 using namespace std;
 
@@ -31,7 +34,7 @@ int main() {
         case 'Q':
             return 0;
         default:
-            cout<<"Invalid Input";
+            cout<<"Invalid Input\nPlease Enter Character Again : ";
         }
     }
 }
