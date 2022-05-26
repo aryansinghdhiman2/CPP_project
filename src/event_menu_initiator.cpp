@@ -2,11 +2,13 @@
 
 #define _EVENT_MENU_INITIATOR_
 #include "..\include\Event.h"
+#include "..\include\EventMenu.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <cstdlib>
 void event_menu_initiator()
 {
     try
@@ -24,19 +26,20 @@ void event_menu_initiator()
             Event temp_event(event_file);
             event_holder.push_back(temp_event);
         }
-        for(size_t i=0;i<event_holder.size();i++)
-        {
-            event_holder.at(i).display();
-        }
-
+        EventMenu menu;
+        menu.clear();
+        menu.display(event_holder);
+        std::cout<<"Press any button to go back to Main Menu"<<std::endl;
+        char ch;
+        std::cin>>ch;//for holding screen
     }
     catch(const int x )
     {
         std::cout<<"File could not be opened\n";
         std::cout<<"Returning to Main Menu.";
-        std::this_thread::sleep_for(std::chrono::milliseconds {250});
+        std::this_thread::sleep_for(std::chrono::milliseconds {500});
         std::cout<<".";
-        std::this_thread::sleep_for(std::chrono::milliseconds {250});
+        std::this_thread::sleep_for(std::chrono::milliseconds {500});
         std::cout<<".\n";
 
     }

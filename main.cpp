@@ -17,6 +17,8 @@ int main() {
     menu.display();
     for (;;)
     {
+        menu.clear();
+        menu.display();
         cin >> input;
 
         switch (input)

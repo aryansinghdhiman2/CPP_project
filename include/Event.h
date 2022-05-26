@@ -15,7 +15,10 @@ class Event
         //Constructor
         Event(std::fstream &input);
         //Methods
-        void display();
+        void display() const;
+        void display_heading() const;
+        void display_date() const;
+        void display_description() const;
 
 };
 

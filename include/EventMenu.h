@@ -7,6 +7,8 @@
 
 class EventMenu : public Interface
 {
+    public:
+    void display(){};
     void display(const std::vector<Event> &event_holder);
     virtual ~EventMenu(){};
 };
