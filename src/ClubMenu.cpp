@@ -5,6 +5,14 @@
 
 void ClubMenu::display()
 {
+    std::cout<<"Going to Club Menu";
+    for(int i=0;i<4;i++)
+    {
+        this->slow_dots_display();
+    }
+
+    this->clear();
+    
     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
     std::cout<<std::setw(24)<<"Club Menu"<<'\n';
     std::cout<<"[1] Club Information"<<std::setw(25)<<std::setfill(' ')<<"[2] Club Recruitment"<<'\n';

@@ -1,1 +1,1 @@
-add_library(def INTERFACE Interface.h MainMenu.h ClubMenu.h Event.h EventMenu.h)
+add_library(def INTERFACE Interface.h MainMenu.h ClubMenu.h Event.h EventMenu.h AdminMenu.h)

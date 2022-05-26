@@ -20,7 +20,8 @@ int main() {
         menu.clear();
         menu.display();
         cin >> input;
-
+        cin.ignore(500,'\n');//ignores extra input 
+        //see comment in club_menu_intiator under cin.ignore
         switch (input)
         {
         case '1':

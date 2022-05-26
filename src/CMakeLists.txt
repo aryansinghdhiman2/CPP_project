@@ -1,1 +1,1 @@
-add_library(impl MainMenu.cpp ClubMenu.cpp Event.cpp EventMenu.cpp)
+add_library(impl MainMenu.cpp ClubMenu.cpp Event.cpp EventMenu.cpp AdminMenu.cpp)

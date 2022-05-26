@@ -8,8 +8,8 @@ Event::Event(std::fstream &input)
         std::getline(input,this->heading);
         std::getline(input,this->date);
         std::getline(input,this->description);
-        int t=input.tellg();
-        //for getting rid of unused variable
+        int t=input.tellg();//gets rid of the bug which causes getline to read last line twice.
+        //for getting rid of unused variable warning by the compiler
         if(t==-2)
             std::cout<<"This should not be possible\n";
     }

@@ -11,9 +11,14 @@
 #include <cstdlib>
 void event_menu_initiator()
 {
+    EventMenu menu;
+    std::cout<<"Going to Events";
+    for(int i=0;i<4;i++)
+    {
+        menu.slow_dots_display();
+    }
     try
     {
-        system("cls");
         std::vector<Event> event_holder;
 
         std::fstream event_file("event.txt",std::ios::in);
@@ -26,21 +31,19 @@ void event_menu_initiator()
             Event temp_event(event_file);
             event_holder.push_back(temp_event);
         }
-        EventMenu menu;
         menu.clear();
         menu.display(event_holder);
-        std::cout<<"Press any button to go back to Main Menu"<<std::endl;
+        std::cout<<"Input any character to go back to Main Menu"<<std::endl;
         char ch;
         std::cin>>ch;//for holding screen
     }
     catch(const int x )
     {
+        menu.clear();
         std::cout<<"File could not be opened\n";
-        std::cout<<"Returning to Main Menu.";
-        std::this_thread::sleep_for(std::chrono::milliseconds {500});
-        std::cout<<".";
-        std::this_thread::sleep_for(std::chrono::milliseconds {500});
-        std::cout<<".\n";
+        std::cout<<"Returning to Main Menu";
+        for(int i=0;i<4;i++)
+            menu.slow_dots_display();
 
     }
     
