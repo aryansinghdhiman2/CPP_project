@@ -41,7 +41,12 @@ void club_menu_initiator()
             std::cout<<"Invalid Input";
         }
         if(should_quit)
+        {
+            std::cout<<"Returning to Main Menu";
+            for(int i=0;i<4;i++)
+                menu.slow_dots_display();
             break;
+        }
         menu.display();
     }
     
