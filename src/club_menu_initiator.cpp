@@ -8,6 +8,8 @@
 #include "club_recruitment_menu.cpp"
 #include "clubs_info_menu.cpp"
 
+//Random Change
+
 void club_menu_initiator()
 {
     ClubMenu menu;
