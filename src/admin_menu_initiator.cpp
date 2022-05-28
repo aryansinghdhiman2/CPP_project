@@ -18,6 +18,8 @@ void admin_menu_initiator()
         //see comment in club_menu_initiator.cpp under cin.ignore that is there.
         switch (input)
         {
+        /*ALl these menu functions will have a Club class object vector passed to them(except admin_event_menu)
+        Remove this comment after ensuring this*/
         case '1':
             //admin_club_info_menu();
             break;
