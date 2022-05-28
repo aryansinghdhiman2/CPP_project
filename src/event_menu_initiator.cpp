@@ -39,6 +39,7 @@ void event_menu_initiator()
         std::cout<<"Returning to Main Menu";
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
+        event_file.close();
     }
     catch(const int x )
     {
