@@ -15,6 +15,7 @@ void EventMenu::display(const std::vector<Event> &event_holder)
         event_holder.at(i).display_date();
         std::cout<<"Event Description :";
         event_holder.at(i).display_description();
+        std::cout<<std::endl;
     }
     std::cout<<std::setw(70)<<std::setfill('*')<<"\n";
 
