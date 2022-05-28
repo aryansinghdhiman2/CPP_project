@@ -41,6 +41,3 @@ int main() {
         }
     }
 }
-//Hello Gourav
-//gd
-//trhrthtrgtrg
