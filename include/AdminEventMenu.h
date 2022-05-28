@@ -8,7 +8,7 @@
 class AdminEventMenu : public Interface
 {
     public:
-    void display(){};
+    void display();
     virtual void display(std::vector<Event> event_holder);
     virtual ~AdminEventMenu(){};
 };

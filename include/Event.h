@@ -14,11 +14,15 @@ class Event
     public:
         //Constructor
         Event(std::fstream &input);
+        Event(std::string,std::string,std::string);
         //Methods
         void display() const;
         void display_heading() const;
         void display_date() const;
         void display_description() const;
+        std::string get_heading();
+        std::string get_date();
+        std::string get_description();
 
 };
 

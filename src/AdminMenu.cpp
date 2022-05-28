@@ -3,14 +3,6 @@
 
 void AdminMenu::display()
 {
-    std::cout<<"Going to Admin Menu";
-    for(int i=0;i<4;i++)
-    {
-        this->slow_dots_display();
-    }
-
-    this->clear();
-
     std::cout<<std::setw(55)<<std::setfill('*')<<"\n"<<std::setfill(' ');
     std::cout<<std::setw(27)<<"Admin Menu"<<"\n\n";
     std::cout<<std::setw(2)<<" "<<"[1] Club Information"<<std::setw(23)<<std::setfill(' ')<<"[2] Club Recruitment"<<'\n';

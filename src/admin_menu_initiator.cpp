@@ -4,11 +4,20 @@
 
 #include <iostream>
 #include "..\include\AdminMenu.h"
+#include "admin_event_menu.cpp"
 
 void admin_menu_initiator()
 {
     AdminMenu menu;
+ 
+    std::cout<<"Going to Admin Menu";
+    for(int i=0;i<4;i++)
+    {
+        menu.slow_dots_display();
+    }
+    menu.clear();
     menu.display();
+
     char input;
     bool should_quit=0;
     for(;;)
@@ -30,7 +39,7 @@ void admin_menu_initiator()
             //admin_club_meeting();
             break;
         case '4':
-            //admin_event_menu();
+            admin_event_menu();
             break;
         case 'q':
         case 'Q':
@@ -47,7 +56,7 @@ void admin_menu_initiator()
                 menu.slow_dots_display();
             break;
         }
-        
+        menu.clear();
         menu.display();
     }
 }

@@ -15,6 +15,13 @@ Event::Event(std::fstream &input)
     }
 }
 
+Event::Event(std::string heading,std::string date,std::string description)
+{
+    this->heading=heading;
+    this->date=date;
+    this->description=description;
+}
+
 void Event::display() const
 {
     std::cout<<this->heading<<"\n"<<this->date<<"\n"<<this->description<<"\n";
@@ -33,4 +40,19 @@ void Event::display_date() const
 void Event::display_description() const
 {
     std::cout<<this->description<<"\n";
+}
+
+std::string Event::get_heading()
+{
+    return this->heading;
+}
+
+std::string Event::get_date()
+{
+    return this->date;
+}
+
+std::string Event::get_description()
+{
+    return this->description;
 }
