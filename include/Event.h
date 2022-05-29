@@ -3,6 +3,7 @@
 #define _EVENT_
 #include <string>
 #include <fstream>
+#include <vector>
 
 class Event
 {
@@ -23,7 +24,8 @@ class Event
         std::string get_heading();
         std::string get_date();
         std::string get_description();
-
+        //friends
+        friend void edit_event(std::vector<Event> event_holder,std::fstream &input);
 };
 
 #endif

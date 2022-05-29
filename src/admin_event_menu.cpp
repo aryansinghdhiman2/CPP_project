@@ -39,6 +39,7 @@ void admin_event_menu()
         
         char input;
         bool should_quit=0;
+        bool has_invalid_input=0;
         for (;;)
         {
             std::cin >> input;
@@ -47,17 +48,21 @@ void admin_event_menu()
             switch (input)
             {
             case '1':
-                menu.clear();
                 add_event(event_holder,event_file);
                 break;
             case '2':
-                menu.clear();
-                // edit_event(event_holder);
+                edit_event(event_holder,event_file);
+                break;
+            case '3':
+                delete_event(event_holder,event_file);
                 break;
             case 'q':
             case 'Q':
                 should_quit=1;
                 break;
+            default:
+                std::cout<<"Invalid Input\nPlease Enter Character Again: ";
+                has_invalid_input=1;
             }
             if(should_quit)
             {
@@ -66,9 +71,23 @@ void admin_event_menu()
                     menu.slow_dots_display();
                 break;
             }
-            menu.clear();
-            menu.display(event_holder);
-            menu.display();
+
+            event_file.seekp(0);
+            event_file.seekg(0);
+
+            event_holder.clear();
+            for (;event_file;)
+            {
+                Event temp_event(event_file);
+                event_holder.push_back(temp_event);
+            }
+
+            if (!has_invalid_input)
+            {
+                menu.clear();
+                menu.display(event_holder);
+                menu.display();
+            }
         }
     }
     catch(const int x)
@@ -79,6 +98,14 @@ void admin_event_menu()
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
     }
+    catch(const char x)
+    {
+        std::cout<<"Returning to Admin Menu";
+        for(int i=0;i<4;i++)
+            menu.slow_dots_display();
+    }
+
+    event_file.close();
     
 }
 

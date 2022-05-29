@@ -14,11 +14,11 @@ int main() {
     
     MainMenu menu;
     char input;
+    bool has_invalid_input=0;
+    menu.clear();
     menu.display();
     for (;;)
     {
-        menu.clear();
-        menu.display();
         cin >> input;
         cin.ignore(500,'\n');//ignores extra input 
         //see comment in club_menu_intiator under cin.ignore
@@ -36,8 +36,15 @@ int main() {
         case 'q':
         case 'Q':
             return 0;
+            break;
         default:
             cout<<"Invalid Input\nPlease Enter Character Again : ";
+            has_invalid_input=1;
+        }
+        if (!has_invalid_input)
+        {
+            menu.clear();
+            menu.display();
         }
     }
 }

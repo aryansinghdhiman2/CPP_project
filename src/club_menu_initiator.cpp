@@ -13,9 +13,17 @@
 void club_menu_initiator()
 {
     ClubMenu menu;
+    std::cout<<"Going to Club Menu";
+    for(int i=0;i<4;i++)
+    {
+        menu.slow_dots_display();
+    }
+    menu.clear();
     menu.display();
+    
     char input;
     bool should_quit=0;
+    bool has_invalid_input=0;
     for(;;)
     {
         std::cin>>input;
@@ -40,7 +48,8 @@ void club_menu_initiator()
             should_quit=1;
             break;
         default:
-            std::cout<<"Invalid Input";
+            std::cout<<"Invalid Input\nPlease enter again:";
+            has_invalid_input=1;
         }
         if(should_quit)
         {
@@ -49,7 +58,8 @@ void club_menu_initiator()
                 menu.slow_dots_display();
             break;
         }
-        menu.display();
+        if(!has_invalid_input)
+            menu.display();
     }
     
 }

@@ -36,10 +36,14 @@ void event_menu_initiator()
         std::cout<<"Input any character to go back to Main Menu"<<std::endl;
         char ch;
         std::cin>>ch;//for holding screen
+        event_file.close();
+
+        if(event_file.is_open())
+            throw '1';
+
         std::cout<<"Returning to Main Menu";
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
-        event_file.close();
     }
     catch(const int x )
     {
@@ -49,6 +53,13 @@ void event_menu_initiator()
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
 
+    }
+    catch(const char c)
+    {
+        std::cout<<"File could not be closed\n";
+        std::cout<<"Returning to Main Menu";
+        for(int i=0;i<4;i++)
+            menu.slow_dots_display();
     }
     
 
