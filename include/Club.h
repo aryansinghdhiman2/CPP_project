@@ -18,11 +18,11 @@ class Club
     {
         return name;
     }
-    void display_name();
-    void display_convener();
-    void display_co_convener();
-    void display_social_media_id();
-    void display_description();
+    void display_name() const;
+    void display_convener() const;
+    void display_co_convener() const;
+    void display_social_media_id() const;
+    void display_description() const;
     
 };
 
