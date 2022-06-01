@@ -25,7 +25,7 @@ class Event
         std::string get_date();
         std::string get_description();
         //friends
-        friend void edit_event(std::vector<Event> event_holder,std::fstream &input);
+        friend void edit_event(std::vector<Event> &event_holder,std::fstream &input);
 };
 
 #endif

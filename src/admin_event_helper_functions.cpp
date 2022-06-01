@@ -24,7 +24,7 @@ void operator<<(std::fstream &input,std::vector<Event> event_holder)
     }
 }
 
-void add_event(std::vector<Event> event_holder,std::fstream &input)
+void add_event(std::vector<Event>& event_holder,std::fstream &input)
 {
     std::string heading,date,description;
     int day,month,year;
@@ -162,7 +162,7 @@ void add_event(std::vector<Event> event_holder,std::fstream &input)
     }
 }
 
-void delete_event(std::vector<Event> event_holder,std::fstream &input)
+void delete_event(std::vector<Event>& event_holder,std::fstream &input)
 {
     int to_be_deleted;
     std::cout<<"Enter Number corresponding to Event to be deleted: ";
@@ -224,7 +224,7 @@ void delete_event(std::vector<Event> event_holder,std::fstream &input)
 
 }
 
-void edit_event(std::vector<Event> event_holder,std::fstream &input)
+void edit_event(std::vector<Event>& event_holder,std::fstream &input)
 {
     int to_be_edited=0;
     std::cout<<"Enter Event to be Edited: ";

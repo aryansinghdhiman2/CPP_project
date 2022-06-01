@@ -75,13 +75,6 @@ void admin_event_menu()
             event_file.seekp(0);
             event_file.seekg(0);
 
-            event_holder.clear();
-            for (;event_file;)
-            {
-                Event temp_event(event_file);
-                event_holder.push_back(temp_event);
-            }
-
             if (!has_invalid_input)
             {
                 menu.clear();
