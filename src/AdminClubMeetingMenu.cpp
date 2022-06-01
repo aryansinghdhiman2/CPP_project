@@ -8,3 +8,8 @@ void AdminClubMeetingMenu::display()
     std::cout << "[3] Delete Meeting" << std::setw(25) << "[Q] Return to Admin Menu" << '\n';
     std::cout << "Enter Input corresponding to Action to be performed: ";
 }
+
+void AdminClubMeetingMenu::display(const std::vector<Meeting>& meeting_holder)
+{
+    
+}

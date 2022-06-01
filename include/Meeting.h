@@ -17,6 +17,8 @@ class Meeting
     public:
     //Constructor
     Meeting(std::fstream &input);
+
+    void display_name();
 };
 
 

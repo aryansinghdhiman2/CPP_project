@@ -1,3 +1,7 @@
+#ifndef _CLUB_H_
+
+#define _CLUB_H_
+
 #include<iostream>
 #include<string>
 #include<fstream>
@@ -22,3 +26,4 @@ class Club
     
 };
 
+#endif

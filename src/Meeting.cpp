@@ -13,3 +13,8 @@ Meeting::Meeting(std::fstream &input)
     if(t==-2)
             std::cout<<"This should not be possible\n";
 }
+
+void Meeting::display_name()
+{
+    std::cout<<this->club_name<<'\n';
+}
