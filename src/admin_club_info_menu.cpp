@@ -68,12 +68,12 @@ void admin_club_info_menu()
             club_file.seekp(0);
             club_file.seekg(0);
 
-            club_info.clear();
-            for (;club_file;)
-            {
-                Club temp_club(club_file);
-                club_info.push_back(temp_club);
-            }
+            // club_info.clear();
+            // for (;club_file;)
+            // {
+            //     Club temp_club(club_file);
+            //     club_info.push_back(temp_club);
+            // }
 
             if (!has_invalid_input)
             {
