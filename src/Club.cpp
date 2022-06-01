@@ -14,7 +14,7 @@ Club::Club(std::fstream &input)
             std::cout<<"This should not be possible\n";
     }
 }
-void Club::display_name()
+void Club::display_name() const
 {
     std::cout<<this->name<<"\n";
 }
