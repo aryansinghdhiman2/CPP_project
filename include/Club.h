@@ -15,7 +15,10 @@ class Club
         return name;
     }
     void display_name();
-    
+    void display_convener();
+    void display_co_convener();
+    void display_social_media_id();
+    void display_description();
     
 };
 
