@@ -18,3 +18,19 @@ void Club::display_name()
 {
     std::cout<<this->name<<"\n";
 }
+void Club::display_convener()
+{
+    std::cout<<this->convener<<"\n";
+}
+void Club::display_co_convener()
+{
+    std::cout<<this->co_convener<<"\n";
+}
+void Club::display_social_media_id()
+{
+    std::cout<<this->social_media_id<<"\n";
+}
+void Club::display_description()
+{
+    std::cout<<this->description<<"\n";
+}
