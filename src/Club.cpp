@@ -26,19 +26,19 @@ void Club::display_name() const
 {
     std::cout<<this->name<<"\n";
 }
-void Club::display_convener()
+void Club::display_convener() const
 {
     std::cout<<this->convener<<"\n";
 }
-void Club::display_co_convener()
+void Club::display_co_convener() const
 {
     std::cout<<this->co_convener<<"\n";
 }
-void Club::display_social_media_id()
+void Club::display_social_media_id() const
 {
     std::cout<<this->social_media_id<<"\n";
 }
-void Club::display_description()
+void Club::display_description() const
 {
     std::cout<<this->description<<"\n";
 }
