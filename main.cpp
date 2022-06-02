@@ -2,11 +2,24 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
+
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/MainMenu.h"
+#include "/Users/gourav/Documents/CPP_project/src/club_menu_initiator.cpp"
+#include "/Users/gourav/Documents/CPP_project/src/event_menu_initiator.cpp"
+#include "/Users/gourav/Documents/CPP_project/src/admin_menu_initiator.cpp"
+#include "/Users/gourav/Documents/CPP_project/include/Event.h"
+
+#else
+
 #include "include/MainMenu.h"
 #include "src/club_menu_initiator.cpp"
 #include "src/event_menu_initiator.cpp"
 #include "src/admin_menu_initiator.cpp"
 #include "include/Event.h"
+
+#endif
 
 using namespace std;
 
