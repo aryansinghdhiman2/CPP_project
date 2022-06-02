@@ -1,8 +1,18 @@
 #ifndef _EVENT_MENU_INITIATOR_
 
 #define _EVENT_MENU_INITIATOR_
+
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/Event.h"
+#include "/Users/gourav/Documents/CPP_project/include/EventMenu.h"
+
+#else
 #include "..\include\Event.h"
 #include "..\include\EventMenu.h"
+
+#endif
+
 #include <iostream>
 #include <fstream>
 #include <vector>

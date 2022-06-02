@@ -1,4 +1,12 @@
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/MainMenu.h"
+
+#else
+
 #include "../include/MainMenu.h"
+
+#endif
 
 #include <iomanip>
 #include <iostream>

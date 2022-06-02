@@ -1,4 +1,13 @@
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/Event.h"
+
+#else
+
 #include "..\include\Event.h"
+
+#endif
+
 #include <string>
 #include <iostream>
 Event::Event(std::fstream &input)

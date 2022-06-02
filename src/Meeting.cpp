@@ -1,4 +1,12 @@
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/Meeting.h"
+
+#else
+
 #include "..\include\Meeting.h"
+
+#endif
 #include<iostream>
 
 Meeting::Meeting(std::fstream &input)
@@ -14,7 +22,7 @@ Meeting::Meeting(std::fstream &input)
             std::cout<<"This should not be possible\n";
 }
 
-void Meeting::display_name()
+void Meeting::display_name() const
 {
     std::cout<<this->club_name<<'\n';
 }

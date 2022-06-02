@@ -4,8 +4,18 @@
 
 #include <fstream>
 #include <iostream>
+
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/AdminMenu.h"
+#include "/Users/gourav/Documents/CPP_project/src/admin_event_menu.cpp"
+
+#else
+
 #include "..\include\AdminMenu.h"
 #include "admin_event_menu.cpp"
+
+#endif
 
 void admin_menu_initiator()
 {

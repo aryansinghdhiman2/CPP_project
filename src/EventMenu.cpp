@@ -1,4 +1,12 @@
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/EventMenu.h"
+
+#else
+
 #include "..\include\EventMenu.h"
+
+#endif
 
 #include <iostream>
 #include <iomanip>

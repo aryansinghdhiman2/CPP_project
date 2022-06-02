@@ -3,10 +3,22 @@
 #define _CLUB_MENU_INITIATOR_
 
 #include <iostream>
+
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/ClubMenu.h"
+#include "/Users/gourav/Documents/CPP_project/src/club_meeting_menu.cpp"
+#include "/Users/gourav/Documents/CPP_project/src/club_recruitment_menu.cpp"
+#include "/Users/gourav/Documents/CPP_project/src/clubs_info_menu.cpp"
+
+#else
+
 #include "../include/ClubMenu.h"
 #include "club_meeting_menu.cpp"
 #include "club_recruitment_menu.cpp"
 #include "clubs_info_menu.cpp"
+
+#endif
 
 //Random Change
 

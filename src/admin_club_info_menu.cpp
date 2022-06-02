@@ -1,7 +1,18 @@
 #ifndef _CLUB_INFO_MENU_
 #define _CLUB_INFO_MENU_
+
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/Club.h"
+#include "/Users/gourav/Documents/CPP_project/include/AdminClubInfoMenu.h"
+
+#else
+
 #include"..\include\AdminClubInfoMenu.h"
 #include"..\include\Club.h"
+
+#endif
+
 void admin_club_info_menu()
 {
     AdminClubInfoMenu menu;

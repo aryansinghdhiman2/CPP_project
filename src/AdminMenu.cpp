@@ -1,4 +1,13 @@
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/AdminMenu.h"
+
+#else
+
 #include "..\include\AdminMenu.h"
+
+#endif
+
 #include <iomanip>
 
 void AdminMenu::display()

@@ -2,7 +2,16 @@
 
 #define _EVENT_HELPER_FUNCTION_
 
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/Event.h"
+
+#else
+
 #include "..\include\Event.h"
+
+#endif
+
 #include <vector>
 #include <iostream>
 #include <string>

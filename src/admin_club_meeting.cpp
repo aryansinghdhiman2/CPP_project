@@ -2,9 +2,20 @@
 
 #define _ADMIN_CLUB_MEETING_
 
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/AdminClubInfoMenu.h"
+#include "/Users/gourav/Documents/CPP_project/include/Meeting.h"
+#include "/Users/gourav/Documents/CPP_project/include/Club.h"
+
+#else
+
 #include "..\include\AdminClubMeetingMenu.h"
 #include "..\include\Meeting.h"
 #include "..\include\Club.h"
+
+#endif
+
 #include <fstream>
 #include <vector>
 

@@ -1,4 +1,12 @@
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/Club.h"
+
+#else
+
 #include"..\include\Club.h"
+
+#endif
 Club::Club(std::fstream &input)
 {
     if(input)

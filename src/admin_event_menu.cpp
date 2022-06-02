@@ -2,8 +2,18 @@
 
 #define _ADMIN_EVENT_MENU_
 
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/AdminEventMenu.h"
+#include "/Users/gourav/Documents/CPP_project/src/admin_event_helper_functions.cpp"
+
+#else
+
 #include "..\include\AdminEventMenu.h"
 #include "admin_event_helper_functions.cpp"
+
+#endif
+
 #include <fstream>
 #include <vector>
 

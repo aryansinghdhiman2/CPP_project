@@ -1,5 +1,16 @@
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/AdminClubInfoMenu.h"
+#include "/Users/gourav/Documents/CPP_project/include/Club.h"
+
+#else
+
+
 #include"..\include\AdminClubInfoMenu.h"
 #include"..\include\Club.h"
+
+#endif
+
 #include<iomanip>
 void AdminClubInfoMenu::display(std::vector<Club>& club_holder)
 {

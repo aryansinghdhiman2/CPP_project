@@ -1,4 +1,13 @@
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/AdminEventMenu.h"
+
+#else
+
 #include "..\include\AdminEventMenu.h"
+
+#endif
+
 #include <iomanip>
 
 void AdminEventMenu::display(std::vector<Event> event_holder)
