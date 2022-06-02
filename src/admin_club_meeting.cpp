@@ -7,12 +7,14 @@
 #include "/Users/gourav/Documents/CPP_project/include/AdminClubInfoMenu.h"
 #include "/Users/gourav/Documents/CPP_project/include/Meeting.h"
 #include "/Users/gourav/Documents/CPP_project/include/Club.h"
+#include "/Users/gourav/Documents/CPP_project/src/admin_club_meeting_helper_functions.cpp"
 
 #else
 
 #include "..\include\AdminClubMeetingMenu.h"
 #include "..\include\Meeting.h"
 #include "..\include\Club.h"
+#include "admin_club_meeting_helper_functions.cpp"
 
 #endif
 
@@ -72,13 +74,13 @@ void admin_club_meeting()
                 switch (input)
                 {
                 case '1':
-                    // add_meeting(meeting_holder,meeting_file);
+                    add_meeting(meeting_holder,meeting_file,club_holder);
                     break;
                 case '2':
-                    // edit_meeting(meeting_holder,meeting_file);
+                    edit_meeting(meeting_holder,meeting_file,club_holder);
                     break;
                 case '3':
-                    // delete_meeting(meeting_holder,meeting_file);
+                    delete_meeting(meeting_holder,meeting_file);
                     break;
                 case 'q':
                 case 'Q':

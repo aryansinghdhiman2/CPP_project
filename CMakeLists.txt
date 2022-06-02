@@ -17,8 +17,8 @@ target_link_libraries(Club_Event def impl)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/other/event.txt
     ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/other/event.txt
-    ${CMAKE_CURRENT_SOURCE_DIR} COPYONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/other/meeting.txt
+    ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

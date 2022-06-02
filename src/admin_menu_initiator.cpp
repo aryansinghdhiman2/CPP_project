@@ -11,7 +11,7 @@
 #include "/Users/gourav/Documents/CPP_project/src/admin_event_menu.cpp"
 
 #else
-
+#include "admin_club_meeting.cpp"
 #include "..\include\AdminMenu.h"
 #include "admin_event_menu.cpp"
 
@@ -47,7 +47,7 @@ void admin_menu_initiator()
             //admin_club_recruitment();
             break;
         case '3':
-            //admin_club_meeting();
+            admin_club_meeting();
             break;
         case '4':
             admin_event_menu();

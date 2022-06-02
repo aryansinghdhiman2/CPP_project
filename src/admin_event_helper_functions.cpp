@@ -134,7 +134,7 @@ void add_event(std::vector<Event>& event_holder,std::fstream &input)
     std::cout<<"Enter Description: ";
     std::cin.ignore(500,'\n');
     std::getline(std::cin,description);
-    
+  
     Event new_event(heading,date,description);
     event_holder.push_back(new_event);
 
@@ -236,8 +236,9 @@ void delete_event(std::vector<Event>& event_holder,std::fstream &input)
 void edit_event(std::vector<Event>& event_holder,std::fstream &input)
 {
     int to_be_edited=0;
+    bool has_error = 0;
     std::cout<<"Enter Event to be Edited: ";
-    for (;;)
+    for (has_error=1;has_error;)
     {
         std::cin >> to_be_edited;
         if (std::cin.fail())
@@ -246,19 +247,18 @@ void edit_event(std::vector<Event>& event_holder,std::fstream &input)
             std::cin.clear();
             std::cin.ignore(500, '\n');
         }
-        else if(to_be_edited<0 || to_be_edited>((int)event_holder.size()-1))
+        else if (to_be_edited<0 || to_be_edited>((int)event_holder.size() - 1))
         {
-            std::cout<<"Invalid Event Number\nPlease Enter Again: ";
+            std::cout << "Invalid Event Number\nPlease Enter Again: ";
         }
-        else 
-            break;
+        else
+            has_error = 0;
     }
     std::cin.ignore(500,'\n');
     int day,month,year;
-    bool has_error=0;
 
     std::cout<<"Enter Heading for Event: ";
-    std::getline(std::cin,event_holder.at(to_be_edited).heading);
+    std::getline(std::cin, event_holder.at(to_be_edited).heading);
 
     std::cout<<"**Enter Numeric Values only for Date of Event**\n";
     std::cout<<"Enter Year of Event: ";

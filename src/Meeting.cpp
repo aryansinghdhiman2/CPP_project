@@ -22,7 +22,61 @@ Meeting::Meeting(std::fstream &input)
             std::cout<<"This should not be possible\n";
 }
 
+Meeting::Meeting(std::string name,std::string venue,std::string date,std::string time,std::string about)
+{
+    this->club_name=name;
+    this->meeting_venue=venue;
+    this->meeting_date=date;
+    this->meeting_time=time;
+    this->meeting_about=about;
+}
+
 void Meeting::display_name() const
 {
     std::cout<<this->club_name<<'\n';
+}
+
+void Meeting::display_venue() const
+{
+    std::cout<<this->meeting_venue<<'\n';
+}
+
+void Meeting::display_date() const
+{
+    std::cout<<this->meeting_date<<'\n';
+}
+
+void Meeting::display_time() const
+{
+    std::cout<<this->meeting_time<<'\n';
+}
+
+void Meeting::display_about() const
+{
+    std::cout<<this->meeting_about<<'\n';
+}
+
+std::string Meeting::get_name() const
+{
+    return this->club_name;
+}
+
+std::string Meeting::get_venue() const
+{
+    return this->meeting_venue;
+}
+
+std::string Meeting::get_date() const
+{
+    return this->meeting_date;
+}
+
+std::string Meeting::get_time() const
+{
+    return this->meeting_time;
+}
+
+std::string Meeting::get_about() const
+{
+    return this->meeting_about;
 }

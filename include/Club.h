@@ -14,7 +14,7 @@ class Club
     std::string description;
     public:
     Club(std::fstream &);
-    std::string get_name()
+    std::string get_name() const
     {
         return name;
     }

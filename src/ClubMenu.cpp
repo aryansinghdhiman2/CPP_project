@@ -1,4 +1,12 @@
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/ClubMenu.h"
+
+#else
+
 #include "../include/ClubMenu.h"
+
+#endif
 
 #include <iomanip>
 #include <iostream>

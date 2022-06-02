@@ -1,9 +1,0 @@
-Example Event
-22/05/2022
-This is an example event.
-Second Event
-25/05/2022
-Secnd example
-Test Heading
-28/5/2022
-Description Event test
