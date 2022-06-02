@@ -2,6 +2,7 @@
 
 #define _ADMIN_MENU_INITIATOR_
 
+#include <fstream>
 #include <iostream>
 #include "..\include\AdminMenu.h"
 #include "admin_event_menu.cpp"
