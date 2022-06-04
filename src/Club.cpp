@@ -42,7 +42,7 @@ void Club::display_description() const
 {
     std::cout<<this->description<<"\n";
 }
-Club::Club(std::string name,std::string convener,std::string co_convener,std::string description)
+Club::Club(std::string name,std::string convener,std::string co_convener,std::string social_media_id,std::string description)
 {
     this->name=name;
     this->convener=convener;
