@@ -23,7 +23,7 @@ class Club
     void display_co_convener() const;
     void display_social_media_id() const;
     void display_description() const;
-    
+    Club(std::string name,std::string convener,std::string co_convener,std::string description);
 };
 
 #endif
