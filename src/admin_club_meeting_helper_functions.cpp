@@ -304,9 +304,9 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
     }
 
     std::cout<<"Enter Venue for Meeting : ";
+    std::cin.ignore(500, '\n');
     for(has_error=1;has_error;)
     {
-        std::cin.ignore(500,'\n');
         std::getline(std::cin,venue);
         if(std::cin.fail())
         {
@@ -461,9 +461,9 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
     }
 
     std::cout<<"Enter Description of the Meeting: ";
+    std::cin.ignore(500, '\n');
     for(has_error=1;has_error;)
     {
-        std::cin.ignore(500,'\n');
         std::getline(std::cin,about);
         if(std::cin.fail())
         {
