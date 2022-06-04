@@ -9,6 +9,7 @@
 #else
 
 #include "..\include\Club.h"
+#include "Club.cpp"
 
 #endif
 
@@ -30,8 +31,8 @@ void add_club(std::vector<Club>& club_info ,std::fstream& club_file )
     std::cout<<"Enter the description of the new club :\n";
     std::getline(std::cin,description);
 
-    Club new_club(name,convener,co_convener,social_media_id,description);
-    club_info.push_back(new_club);
+    //Club new_club(name,convener,co_convener,social_media_id,description);
+    //club_info.push_back(new_club);
 
 
 }
