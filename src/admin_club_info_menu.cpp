@@ -1,18 +1,8 @@
 #ifndef _CLUB_INFO_MENU_
 #define _CLUB_INFO_MENU_
-
-#ifdef __APPLE__
-
-#include "/Users/gourav/Documents/CPP_project/include/Club.h"
-#include "/Users/gourav/Documents/CPP_project/include/AdminClubInfoMenu.h"
-
-#else
-
 #include"..\include\AdminClubInfoMenu.h"
 #include"..\include\Club.h"
-
-#endif
-
+#include"admin_info_helper_functions.cpp"
 void admin_club_info_menu()
 {
     AdminClubInfoMenu menu;
@@ -52,13 +42,13 @@ void admin_club_info_menu()
             switch (input)
             {
             case '1':
-            //   add_club(club_info,club_file);
+             add_club(club_info,club_file);
                 break;
             case '2':
-            //     edit_club(club_info,club_file);
+                edit_club(club_info,club_file);
                 break;
             case '3':
-          //      delete_club(club_info,club_file);
+                delete_club(club_info,club_file);
                 break;
             case 'q':
             case 'Q':
@@ -78,15 +68,7 @@ void admin_club_info_menu()
 
             club_file.seekp(0);
             club_file.seekg(0);
-
-            // club_info.clear();
-            // for (;club_file;)
-            // {
-            //     Club temp_club(club_file);
-            //     club_info.push_back(temp_club);
-            // }
-
-            if (!has_invalid_input)
+        if (!has_invalid_input)
             {
                 menu.clear();
                 menu.display(club_info);
