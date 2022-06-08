@@ -4,7 +4,7 @@
 
 #ifdef __APPLE__
 
-#include "/Users/gourav/Documents/CPP_project/include/AdminClubInfoMenu.h"
+#include "/Users/gourav/Documents/CPP_project/include/AdminClubMeetingMenu.h"
 #include "/Users/gourav/Documents/CPP_project/include/Meeting.h"
 #include "/Users/gourav/Documents/CPP_project/include/Club.h"
 #include "/Users/gourav/Documents/CPP_project/src/admin_club_meeting_helper_functions.cpp"
