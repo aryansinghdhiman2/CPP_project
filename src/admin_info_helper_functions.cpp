@@ -32,7 +32,37 @@ void add_club(std::vector<Club>& club_info ,std::fstream& club_file )
 
     Club new_club(name,convener,co_convener,social_media_id,description);
     club_info.push_back(new_club);
+    try
+    {
+        club_file.close();
+        if(club_file.is_open())
+        {
+            throw -1;
+        }
+        else
+        {
+            club_file.clear();
+            club_file.open("club.txt", std::ios::out | std::ios::in | std::ios::trunc);
 
+            if (!club_file.is_open())
+            {
+                throw '1';
+            }
+            else
+            {
+    //            club_file << club_info;
+            }
+        }
+    }
+    catch(const int x)
+    {
+        std::cout <<"Problem Closing File\n";
+    }
+    catch (const char x)
+    {
+        std::cout << "Problem Opening File after Closing\n";
+        throw '1';
+    }
 
 }
 void edit_club(std::vector<Club>& club_info ,std::fstream& club_file )
