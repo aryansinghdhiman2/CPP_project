@@ -9,7 +9,6 @@
 #else
 
 #include "..\include\Club.h"
-#include "Club.cpp"
 
 #endif
 

@@ -9,6 +9,7 @@
 
 #include "/Users/gourav/Documents/CPP_project/include/AdminMenu.h"
 #include "/Users/gourav/Documents/CPP_project/src/admin_event_menu.cpp"
+#include "/Users/gourav/Documents/CPP_project/src/admin_club_meeting.cpp"
 
 #else
 #include "admin_club_meeting.cpp"

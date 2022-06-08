@@ -1,6 +1,6 @@
 #ifdef __APPLE__
 
-#include "/Users/gourav/Documents/CPP_project/include/ClubMeetingMenu.h"
+#include "/Users/gourav/Documents/CPP_project/include/AdminClubMeetingMenu.h"
 
 #else
 

@@ -2,9 +2,17 @@
 
 #define _MEETING_HELPER_FUNCTIONS_
 
+#ifdef __APPLE__
+
+#include "/Users/gourav/Documents/CPP_project/include/Meeting.h"
+#include "/Users/gourav/Documents/CPP_project/include/Club.h"
+
+#else
+
 #include "..\include\Meeting.h"
 #include "..\include\Club.h"
 
+#endif
 
 #include <fstream>
 #include <vector>
