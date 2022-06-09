@@ -22,10 +22,11 @@ void AdminClubMeetingMenu::display(const std::vector<Meeting>& meeting_holder)
 {
     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
     std::cout<<"Clubs that have Meeting:\n";
-    for(unsigned int i=0;i<meeting_holder.size();i++)
+    int i=0;
+    for(auto t=meeting_holder.begin();t!=meeting_holder.end();t++,i++)
     {
         std::cout<<'['<<i<<']'<<' ';
-        meeting_holder.at(i).display_name();
+        t->display_name();
     }
     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
 }

@@ -15,10 +15,11 @@
 void AdminClubInfoMenu::display(std::vector<Club>& club_holder)
 {
     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
-    for(unsigned int i=0;i<club_holder.size();i++)
+    int i=0;
+    for(auto t=club_holder.begin();t!=club_holder.end();t++,i++)
     {
         std::cout<<'['<<i<<']'<<' ';
-        club_holder.at(i).display_name();
+        t->display_name();
     }
     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
 }

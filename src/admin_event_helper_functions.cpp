@@ -19,17 +19,17 @@
 
 void operator<<(std::fstream &input,std::vector<Event> event_holder)
 {
-    for (unsigned int i = 0; i < event_holder.size(); i++)
+    for (auto t=event_holder.begin();t!=event_holder.end();t++)
     {
-        input << event_holder.at(i).get_heading() << std::endl;
-        input << event_holder.at(i).get_date() << std::endl;
-        if ((event_holder.size() - i) == 1)
+        input << t->get_heading() << std::endl;
+        input << t->get_date() << std::endl;
+        if (t==(event_holder.end()-1))
         {
-            input << event_holder.at(i).get_description();
+            input << t->get_description();
             input.flush();
         }
         else
-            input << event_holder.at(i).get_description() << std::endl;
+            input << t->get_description() << std::endl;
     }
 }
 
@@ -193,15 +193,8 @@ void delete_event(std::vector<Event>& event_holder,std::fstream &input)
             break;
     }
     
-    std::vector<Event> temp_holder;
-    for(int i=0;i<(int)event_holder.size();i++)
-    {
-        if(i!=to_be_deleted)
-            temp_holder.push_back(event_holder.at(i));
-    }
-
-    event_holder.clear();
-    event_holder=temp_holder;
+    auto iterator_to_deleted = event_holder.begin()+to_be_deleted;
+    event_holder.erase(iterator_to_deleted);
 
     try
     {

@@ -21,28 +21,28 @@
 
 void operator<<(std::fstream &input,std::vector<Meeting> meeting_holder)
 {
-    for (unsigned int i = 0; i < meeting_holder.size(); i++)
+    for (auto t = meeting_holder.begin(); t !=meeting_holder.end(); t++)
     {
-        input << meeting_holder.at(i).get_name() << std::endl;
-        input << meeting_holder.at(i).get_venue() << std::endl;
-        input << meeting_holder.at(i).get_date() << std::endl;
-        input << meeting_holder.at(i).get_time() << std::endl;
-        if ((meeting_holder.size() - i) == 1)
+        input << t->get_name() << std::endl;
+        input << t->get_venue() << std::endl;
+        input << t->get_date() << std::endl;
+        input << t->get_time() << std::endl;
+        if (t==(meeting_holder.end()-1))
         {
-            input << meeting_holder.at(i).get_about();
+            input << t->get_about();
             input.flush();
         }
         else
-            input << meeting_holder.at(i).get_about() << std::endl;
+            input << t->get_about() << std::endl;
     }
 }
 
 void display_club_names(const std::vector<Club> &club_holder)
 {
     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
-    for(unsigned int i=0;i<club_holder.size();i++)
+    for(auto t = club_holder.begin(); t !=club_holder.end(); t++)
     {
-        club_holder.at(i).display_name();
+        t->display_name();
     }
     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
 }
@@ -538,15 +538,8 @@ void delete_meeting(std::vector<Meeting>& meeting_holder,std::fstream &input)
             break;
     }
     
-    std::vector<Meeting> temp_holder;
-    for(int i=0;i<(int)meeting_holder.size();i++)
-    {
-        if(i!=to_be_deleted)
-            temp_holder.push_back(meeting_holder.at(i));
-    }
-
-    meeting_holder.clear();
-    meeting_holder=temp_holder;
+    auto iterator_to_deleted=meeting_holder.begin();
+    meeting_holder.erase(iterator_to_deleted);
 
     try
     {

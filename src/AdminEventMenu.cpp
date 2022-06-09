@@ -13,10 +13,11 @@
 void AdminEventMenu::display(std::vector<Event> event_holder)
 {
     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
-    for(unsigned int i=0;i<event_holder.size();i++)
+    int i=0;
+    for(auto t=event_holder.begin();t!=event_holder.end();t++,i++)
     {
         std::cout<<'['<<i<<']'<<' ';
-        event_holder.at(i).display_heading();
+        t->display_heading();
     }
     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
 }
