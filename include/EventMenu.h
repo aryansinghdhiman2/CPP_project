@@ -1,7 +1,6 @@
 #ifndef _EVENT_MENU_H_
 
 #define _EVENT_MENU_H_
-#include <vector>
 #ifdef __APPLE__
 
 #include "/Users/gourav/Documents/CPP_project/include/Interface.h"
@@ -13,6 +12,8 @@
 #include "Event.h"
 
 #endif
+
+#include <vector>
 
 class EventMenu : public Interface
 {
