@@ -14,6 +14,7 @@
 #else
 
 #include "../include/ClubMenu.h"
+#include "../include/ClubMeetingMenu.h"
 #include "club_meeting_menu.cpp"
 #include "club_recruitment_menu.cpp"
 #include "clubs_info_menu.cpp"

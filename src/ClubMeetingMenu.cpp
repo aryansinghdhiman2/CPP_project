@@ -1,8 +1,5 @@
 
 #include "..\include\ClubMeetingMenu.h"
-
-#endif
-
 #include <iostream>
 #include <iomanip>
 

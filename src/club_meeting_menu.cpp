@@ -39,6 +39,7 @@ void club_meeting_menu()
         std::cout<<"Returning to Main Menu";
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
+        menu.clear();
     }
     catch(const int x )
     {
@@ -56,6 +57,7 @@ void club_meeting_menu()
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
     }
+
     
 
 }
