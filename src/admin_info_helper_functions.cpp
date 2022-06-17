@@ -69,7 +69,7 @@ void edit_club(std::vector<Club>& club_info ,std::fstream& club_file )
 {
     int to_be_edited=0;
     bool has_error = 0;
-    std::cout<<"Enter Event to be Edited: ";
+    std::cout<<"Enter club to be Edited: ";
     for (has_error=1;has_error;)
     {
         std::cin >> to_be_edited;
@@ -81,7 +81,7 @@ void edit_club(std::vector<Club>& club_info ,std::fstream& club_file )
         }
         else if (to_be_edited<0 || to_be_edited>((int)club_info.size() - 1))
         {
-            std::cout << "Invalid Event Number\nPlease Enter Again: ";
+            std::cout << "Invalid club Number\nPlease Enter Again: ";
         }
         else
             has_error = 0;
@@ -148,7 +148,7 @@ void delete_club(std::vector<Club>& club_info ,std::fstream& club_file )
         }
         else if(to_be_deleted<0 || to_be_deleted>((int)club_info.size()-1))
         {
-            std::cout<<"Invalid Event Number\nPlease Enter Again: ";
+            std::cout<<"Invalid club Number\nPlease Enter Again: ";
         }
         else 
             break;
