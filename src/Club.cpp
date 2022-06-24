@@ -49,3 +49,23 @@ Club::Club(std::string name,std::string convener,std::string co_convener,std::st
     this->co_convener=co_convener;
     this->description=description;
 }
+std::string Club:: get_name()
+{
+    return this->name;
+}
+std::string Club:: get_convener()
+{
+    return this->convener;
+}
+std::string Club:: get_co_convener()
+{
+    return this-> co_convener;
+}
+std::string Club:: get_social_media_id()
+{
+    return this->social_media_id;
+}
+std::string Club:: get_description()
+{
+    return this-> description;
+}
