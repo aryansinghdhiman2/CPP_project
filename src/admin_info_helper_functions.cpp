@@ -16,6 +16,24 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+void operator<<(std::fstream &club_file,std::vector<Club> club_info)
+{
+    for (auto t=club_info.begin();t!=club_info.end();t++)
+    {
+        club_file<<t->get_name()<<std::endl;
+        club_file<<t->get_convener()<<std::endl;
+        club_file<<t->get_co_convener()<<std::endl;
+        club_file<<t->get_social_media_id()<<std::endl;
+        if (t==(club_info.end()-1))
+        {
+            club_file << t->get_description();
+            club_file.flush();
+        }
+        else
+            club_file << t->get_description() << std::endl;
+    }
+}
+
 void add_club(std::vector<Club>& club_info ,std::fstream& club_file )
 {
     std::string name,convener,co_convener,social_media_id,description;
