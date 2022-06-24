@@ -68,7 +68,7 @@ void add_club(std::vector<Club>& club_info ,std::fstream& club_file )
             }
             else
             {
-    //            club_file << club_info;
+                club_file << club_info;
             }
         }
     }
@@ -133,7 +133,7 @@ void edit_club(std::vector<Club>& club_info ,std::fstream& club_file )
             }
             else
             {
-        //        club_file << club_info;
+                club_file << club_info;
             }
         }
     }
@@ -188,7 +188,7 @@ void delete_club(std::vector<Club>& club_info ,std::fstream& club_file )
             }
             else
             {
-       //         club_file<<club_info;
+                club_file<<club_info;
             }
         }
     }
