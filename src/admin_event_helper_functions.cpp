@@ -89,7 +89,7 @@ void add_event(std::vector<Event>& event_holder,std::fstream &input)
         }
         else if(month==2)
         {
-            if(!year%4)
+            if(!(year%4))
             {
                 if(day>29){
                     std::cout<<"Incorrect Day Entered\nPlease Enter Again: ";
@@ -301,7 +301,7 @@ void edit_event(std::vector<Event>& event_holder,std::fstream &input)
         }
         else if(month==2)
         {
-            if(!year%4)
+            if(!(year%4))
             {
                 if(day>29){
                     std::cout<<"Incorrect Day Entered\nPlease Enter Again: ";

@@ -150,7 +150,7 @@ void add_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const 
         }
         else if(month==2)
         {
-            if(!year%4)
+            if(!(year%4))
             {
                 if(day>29){
                     std::cout<<"Incorrect Day Entered\nPlease Enter Again: ";
@@ -375,7 +375,7 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
         }
         else if(month==2)
         {
-            if(!year%4)
+            if(!(year%4))
             {
                 if(day>29){
                     std::cout<<"Incorrect Day Entered\nPlease Enter Again: ";

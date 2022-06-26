@@ -20,13 +20,14 @@ void club_meeting_menu()
     }
     try
     {
-        std::vector<Meeting> meeting_holder;
-
         std::fstream meeting_file("meeting.txt",std::ios::in);
         if(!meeting_file.is_open())
         {
             throw -1;
         }
+
+        std::vector<Meeting> meeting_holder;
+        
         for(;meeting_file;)
         {
             Meeting temp_meeting(meeting_file);
