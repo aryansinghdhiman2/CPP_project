@@ -1,7 +1,7 @@
 #ifdef __APPLE__
 #include "/Users/gourav/Documents/CPP_project/include/ClubMeetingMenu.h"
 
-#elif
+#else
 #include "..\include\ClubMeetingMenu.h"
 #endif
 #include <iostream>

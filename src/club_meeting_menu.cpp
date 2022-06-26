@@ -4,7 +4,7 @@
 #ifdef __APPLE__
 #include "/Users/gourav/Documents/CPP_project/include/ClubMeetingMenu.h"
 #include "/Users/gourav/Documents/CPP_project/include/Meeting.h"
-#elif
+#else
 
 #include "..\include\ClubMeetingMenu.h"
 #include "..\include\Meeting.h"

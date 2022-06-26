@@ -4,7 +4,7 @@
 #ifdef __APPLE__
 #include "/Users/gourav/Documents/CPP_project/include/Interface.h"
 #include "/Users/gourav/Documents/CPP_project/include/Club.h"
-#elif
+#else
 #include "Interface.h"
 #include "Club.h"
 #endif
