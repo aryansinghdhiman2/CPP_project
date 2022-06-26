@@ -21,7 +21,7 @@
 #include <cstdlib>
 void event_menu_initiator()
 {
-    EventMenu menu;
+    EventMenu menu;//creating a object of type EventMenu
     std::cout<<"Going to Events";
     for(int i=0;i<4;i++)
     {
@@ -29,26 +29,26 @@ void event_menu_initiator()
     }
     try
     {
-        std::vector<Event> event_holder;
+        std::vector<Event> event_holder;//creating an Event vector for holding objects of type Event
 
-        std::fstream event_file("event.txt",std::ios::in);
-        if(!event_file.is_open())
+        std::fstream event_file("event.txt",std::ios::in);// opening event.txt for reading
+        if(!event_file.is_open())//throwing exception if file is not opened
         {
             throw -1;
         }
         for(;event_file;)
         {
-            Event temp_event(event_file);
-            event_holder.push_back(temp_event);
+            Event temp_event(event_file);//creating a Event object from event.txt file
+            event_holder.push_back(temp_event);//adding newly created object to vector
         }
         menu.clear();
-        menu.display(event_holder);
+        menu.display(event_holder);// displaying all events
         std::cout<<"Input any character to go back to Main Menu"<<std::endl;
         char ch;
         std::cin>>ch;//for holding screen
-        event_file.close();
+        event_file.close();//closing event.txt file
 
-        if(event_file.is_open())
+        if(event_file.is_open())//throwing exception if file is not closed
             throw '1';
 
         std::cout<<"Returning to Main Menu";

@@ -5,6 +5,7 @@ include(CTest)
 enable_testing()
 
 add_compile_options(-Wall)
+add_compile_options(-std=c++20)
 add_subdirectory(include)
 add_subdirectory(src)
 add_subdirectory(other)

@@ -1,5 +1,9 @@
+#ifdef __APPLE__
+#include "/Users/gourav/Documents/CPP_project/include/ClubMeetingMenu.h"
 
+#elif
 #include "..\include\ClubMeetingMenu.h"
+#endif
 #include <iostream>
 #include <iomanip>
 

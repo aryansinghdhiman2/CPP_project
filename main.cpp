@@ -25,11 +25,11 @@ using namespace std;
 
 int main() {
     
-    MainMenu menu;
+    MainMenu menu;// creating an object of type main menu. MainMenu is a class that is derieved from Interface class
     char input;
     bool has_invalid_input=0;
-    menu.clear();
-    menu.display();
+    menu.clear();// calling clear method.
+    menu.display();//Calling display method
     for (;;)
     {
         cin >> input;

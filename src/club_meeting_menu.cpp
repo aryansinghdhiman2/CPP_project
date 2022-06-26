@@ -1,8 +1,14 @@
 #ifndef _CLUB_MEET_MENU_
 
 #define _CLUB_MEET_MENU_
+#ifdef __APPLE__
+#include "/Users/gourav/Documents/CPP_project/include/ClubMeetingMenu.h"
+#include "/Users/gourav/Documents/CPP_project/include/Meeting.h"
+#elif
+
 #include "..\include\ClubMeetingMenu.h"
 #include "..\include\Meeting.h"
+#endif
 void club_meeting_menu()
 {
     
