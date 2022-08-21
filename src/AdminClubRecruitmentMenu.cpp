@@ -13,7 +13,7 @@
 
 void AdminClubRecruitmentMenu::display()
 {
-    std::cout << "[1] New Recruitment" << std::setw(18) << "[2] Edit Recruitment Info" << std::setw(28) << '\n';
+    std::cout << "[1] New Recruitment" << std::setw(29) << "[2] Edit Recruitment Info" << std::setw(28) << '\n';
     std::cout << "[3] Delete Recruitment" << std::setw(25) << "[Q] Return to Admin Menu" << '\n';
     std::cout << "Enter Input corresponding to Action to be performed: ";
 }

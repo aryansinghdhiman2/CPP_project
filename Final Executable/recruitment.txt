@@ -2,3 +2,7 @@ BPC
 207,1st Floor,Block 2,UIET
 14/05/2022
 13:00
+Magboard
+UIET Canteen
+18/06/2022
+15:00
