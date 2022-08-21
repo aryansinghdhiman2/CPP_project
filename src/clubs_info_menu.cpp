@@ -42,7 +42,7 @@ ClubInfoMenu menu;
         }
         menu.clear();
         menu.display(club_holder);
-        std::cout<<"Input any character to go back to Main Menu"<<std::endl;
+        std::cout<<"Input any character to go back to Club Menu"<<std::endl;
         char ch;
         std::cin>>ch;
         club_file.close();
@@ -53,12 +53,13 @@ ClubInfoMenu menu;
         std::cout<<"Returning to Main Menu";
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
+        menu.clear();
     }
     catch(const int x )
     {
         menu.clear();
         std::cout<<"File could not be opened\n";
-        std::cout<<"Returning to Main Menu";
+        std::cout<<"Returning to Club Menu";
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
 

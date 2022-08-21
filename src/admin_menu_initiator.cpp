@@ -15,6 +15,8 @@
 #include "admin_club_meeting.cpp"
 #include "..\include\AdminMenu.h"
 #include "admin_event_menu.cpp"
+#include "admin_club_info_menu.cpp"
+#include "admin_club_recruitment.cpp"
 
 #endif
 
@@ -42,10 +44,10 @@ void admin_menu_initiator()
         /*ALl these menu functions will have a Club class object vector passed to them(except admin_event_menu)
         Remove this comment after ensuring this*/
         case '1':
-            //admin_club_info_menu();
+            admin_club_info_menu();
             break;
         case '2':
-            //admin_club_recruitment();
+            admin_club_recruitment();
             break;
         case '3':
             admin_club_meeting();

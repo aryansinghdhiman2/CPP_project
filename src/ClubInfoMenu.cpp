@@ -25,9 +25,9 @@ void ClubInfoMenu::display(const std::vector<Club> &club_holder)
         t->display_convener();
         std::cout<<"Co-convenor:";
         t->display_co_convener();
-        std::cout<<"Social Media Handle";
+        std::cout<<"Social Media Handle: ";
         t->display_social_media_id();
-        std::cout<<"Club Description";
+        std::cout<<"Club Description: ";
         t->display_description();
         std::cout<<std::endl;
     }

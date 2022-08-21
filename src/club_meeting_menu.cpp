@@ -35,7 +35,7 @@ void club_meeting_menu()
         }
         menu.clear();
         menu.display(meeting_holder);
-        std::cout<<"Input any character to go back to Main Menu"<<std::endl;
+        std::cout<<"Input any character to go back to Club Menu"<<std::endl;
         char ch;
         std::cin>>ch;//for holding screen
         meeting_file.close();
@@ -43,7 +43,7 @@ void club_meeting_menu()
         if(meeting_file.is_open())
             throw '1';
 
-        std::cout<<"Returning to Main Menu";
+        std::cout<<"Returning to Club Menu";
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
         menu.clear();
@@ -52,7 +52,7 @@ void club_meeting_menu()
     {
         menu.clear();
         std::cout<<"File could not be opened\n";
-        std::cout<<"Returning to Main Menu";
+        std::cout<<"Returning to Club Menu";
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
 
@@ -60,7 +60,7 @@ void club_meeting_menu()
     catch(const char c)
     {
         std::cout<<"File could not be closed\n";
-        std::cout<<"Returning to Main Menu";
+        std::cout<<"Returning to Club Menu";
         for(int i=0;i<4;i++)
             menu.slow_dots_display();
     }

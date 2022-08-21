@@ -1,16 +1,19 @@
-#ifndef _MEETING_HELPER_FUNCTIONS_
+#ifndef _RECRUITMENT_HELPER_FUNCTIONS_
 
-#define _MEETING_HELPER_FUNCTIONS_
+#define _RECRUITMENT_HELPER_FUNCTIONS_
 
 #ifdef __APPLE__
 
-#include "/Users/gourav/Documents/CPP_project/include/Meeting.h"
+#include "/Users/gourav/Documents/CPP_project/include/Recruitment.h"
 #include "/Users/gourav/Documents/CPP_project/include/Club.h"
+#include "/Users/gourav/Documents/CPP_project/src/admin_club_meeting_helper_functions.cpp"
 
 #else
 
-#include "..\include\Meeting.h"
+#include "..\include\Recruitment.h"
 #include "..\include\Club.h"
+#include "admin_club_meeting_helper_functions.cpp"
+
 
 #endif
 
@@ -19,37 +22,34 @@
 #include <string>
 #include <iomanip>
 
-void operator<<(std::fstream &input,std::vector<Meeting> meeting_holder)
+void operator<<(std::fstream &input,std::vector<Recruitment> recruitment_holder)
 {
-    for (auto t = meeting_holder.begin(); t !=meeting_holder.end(); t++)
+    for (auto t = recruitment_holder.begin(); t !=recruitment_holder.end(); t++)
     {
         input << t->get_name() << std::endl;
         input << t->get_venue() << std::endl;
         input << t->get_date() << std::endl;
-        input << t->get_time() << std::endl;
-        if (t==(meeting_holder.end()-1))
+        if (t==(recruitment_holder.end()-1))
         {
-            input << t->get_about();
+            input << t->get_time();
             input.flush();
         }
         else
-            input << t->get_about() << std::endl;
+            input << t->get_time() << std::endl;
     }
 }
 
-void display_club_names(const std::vector<Club> &club_holder)
-{
-    std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
-    int i=0;
-    for(auto t = club_holder.begin(); t !=club_holder.end(); t++,i++)
-    {
-        std::cout<<"["<<i<<"]";
-        t->display_name();
-    }
-    std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
-}
+// void display_club_names(const std::vector<Club> &club_holder)
+// {
+//     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
+//     for(auto t = club_holder.begin(); t !=club_holder.end(); t++)
+//     {
+//         t->display_name();
+//     }
+//     std::cout<<std::setw(40)<<std::setfill('*')<<"\n"<<std::setfill(' ');
+// }
 
-void admin_meeting_clear()
+void admin_recruitment_clear()
 {
     #if defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__)
         system("cls");
@@ -59,12 +59,12 @@ void admin_meeting_clear()
     #endif
 }
 
-void add_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const std::vector<Club> &club_holder)
+void add_recruitment(std::vector<Recruitment> &recruitment_holder,std::fstream &input,const std::vector<Club> &club_holder)
 {
-    std::string name,venue,about,date,time;
+    std::string name,venue,date,time;
     int day,month,year,hour,minute;
 
-    admin_meeting_clear();
+    admin_recruitment_clear();
     display_club_names(club_holder);
     std::cout<<"Enter Club for which Meeting has to be scheduled: ";
     int club_selected;
@@ -88,7 +88,7 @@ void add_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const 
     }
 
     name=club_holder.at(club_selected).get_name();
-    std::cout<<"Enter Venue for Meeting : ";
+    std::cout<<"Enter Venue for Recruitment : ";
     for(has_error=1;has_error;)
     {
         std::cin.ignore(500,'\n');
@@ -118,7 +118,7 @@ void add_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const 
         else 
             has_error=0;
     }
-    std::cout<<"Enter Month of Meeting: ";
+    std::cout<<"Enter Month of Recruitment: ";
     for(has_error=1;has_error;)
     {
         std::cin>>month;
@@ -136,7 +136,7 @@ void add_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const 
             has_error=0;
     }
 
-    std::cout<<"Enter Day of Meeting: ";
+    std::cout<<"Enter Day of Recruitment: ";
     for(has_error=1;has_error;)
     {
         std::cin>>day;
@@ -211,7 +211,7 @@ void add_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const 
         else
             has_error=0;
     }
-    std::cout<<"Enter Minutes: ";
+    std::cout<<"Enter Minute: ";
     for(has_error=1;has_error;)
     {
         std::cin>>minute;
@@ -246,18 +246,8 @@ void add_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const 
         time='0'+std::to_string(hour)+':'+std::to_string(minute);
     }
 
-    std::cout<<"Enter Description of the Meeting: ";
-    std::cin.ignore(500,'\n');
-    std::getline(std::cin,about);
-    if(std::cin.fail())
-    {
-        std::cout << "Invalid Input\nPlease Enter Again: ";
-        std::cin.clear();
-        std::cin.ignore(500, '\n');
-    }
-
-    Meeting temp_meeting(name,venue,date,time,about);
-    meeting_holder.push_back(temp_meeting);
+    Recruitment temp_meeting(name,venue,date,time);
+    recruitment_holder.push_back(temp_meeting);
 
     try
     {
@@ -268,14 +258,14 @@ void add_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const 
         }
         else
         {
-            input.open("meeting.txt",std::ios::trunc|std::ios::out|std::ios::in);
+            input.open("recruitment.txt",std::ios::trunc|std::ios::out|std::ios::in);
             if(!input.is_open())
             {
                 throw '1';
             }
             else
             {
-                input << meeting_holder;
+                input << recruitment_holder;
             }
         }
     }
@@ -291,9 +281,9 @@ void add_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const 
 
 }
 
-void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const std::vector<Club> &club_holder)
+void edit_recruitment(std::vector<Recruitment> &recruitment_holder,std::fstream &input,const std::vector<Club> &club_holder)
 {
-    std::string venue,about,date,time;
+    std::string venue,date,time;
     int day,month,year,hour,minute,to_be_edited;
 
     bool has_error=0;
@@ -314,7 +304,7 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
         }
     }
 
-    std::cout<<"Enter Venue for Meeting : ";
+    std::cout<<"Enter Venue for Recruitment : ";
     std::cin.ignore(500, '\n');
     for(has_error=1;has_error;)
     {
@@ -331,7 +321,7 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
     }
 
     std::cout<<"**Enter Numeric Values only for Date of Event**\n";
-    std::cout<<"Enter Year of Event: ";
+    std::cout<<"Enter Year of Recruitment: ";
     for(has_error=1;has_error;)
     {
         std::cin>>year;
@@ -344,7 +334,7 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
         else 
             has_error=0;
     }
-    std::cout<<"Enter Month of Meeting: ";
+    std::cout<<"Enter Month of Recruitment: ";
     for(has_error=1;has_error;)
     {
         std::cin>>month;
@@ -362,7 +352,7 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
             has_error=0;
     }
 
-    std::cout<<"Enter Day of Meeting: ";
+    std::cout<<"Enter Day of Recruitment: ";
     for(has_error=1;has_error;)
     {
         std::cin>>day;
@@ -437,8 +427,8 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
         else
             has_error=0;
     }
-    for(has_error=1;has_error;)
     std::cout<<"Enter Minutes: ";
+    for(has_error=1;has_error;)
     {
         std::cin>>minute;
         if(std::cin.fail())
@@ -457,36 +447,20 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
 
     if(hour<10 && minute<10)
     {
-        time='0'+std::to_string(hour)+':'+'0'+std::to_string(minute);
+        time='0'+std::to_string(hour)+'\\'+'0'+std::to_string(minute);
     }
     if(hour>9 && minute<10)
     {
-        time=std::to_string(hour)+':'+'0'+std::to_string(minute);
+        time=std::to_string(hour)+'\\'+'0'+std::to_string(minute);
     }
     if(hour>9 && minute>9)
     {
-        time=std::to_string(hour)+':'+std::to_string(minute);
+        time=std::to_string(hour)+'\\'+std::to_string(minute);
     }
     if(hour<10 && minute>9)
     {
-        time='0'+std::to_string(hour)+':'+std::to_string(minute);
+        time='0'+std::to_string(hour)+'\\'+std::to_string(minute);
     }
-
-    std::cout<<"Enter Description of the Meeting: ";
-    std::cin.ignore(500, '\n');
-    for(has_error=1;has_error;)
-    {
-        std::getline(std::cin,about);
-        if(std::cin.fail())
-        {
-            std::cout<<"Some error occurred\nPlease Enter Again: ";
-            std::cin.clear();
-            std::cin.ignore(500,'\n');
-        }
-        else
-            has_error=0;
-    }
-
 
     try
     {
@@ -497,14 +471,14 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
         }
         else
         {
-            input.open("meeting.txt",std::ios::trunc|std::ios::out|std::ios::in);
+            input.open("recruitment.txt",std::ios::trunc|std::ios::out|std::ios::in);
             if(!input.is_open())
             {
                 throw '1';
             }
             else
             {
-                input << meeting_holder;
+                input << recruitment_holder;
             }
         }
     }
@@ -520,7 +494,7 @@ void edit_meeting(std::vector<Meeting> &meeting_holder,std::fstream &input,const
 
 }
 
-void delete_meeting(std::vector<Meeting>& meeting_holder,std::fstream &input)
+void delete_recruitment(std::vector<Recruitment>& recruitment_holder,std::fstream &input)
 {
     int to_be_deleted;
     std::cout<<"Enter Number corresponding to Meeting to be deleted: ";
@@ -534,7 +508,7 @@ void delete_meeting(std::vector<Meeting>& meeting_holder,std::fstream &input)
             std::cin.clear();
             std::cin.ignore(500, '\n');
         }
-        else if(to_be_deleted<0 || to_be_deleted>((int)meeting_holder.size()-1))
+        else if(to_be_deleted<0 || to_be_deleted>((int)recruitment_holder.size()-1))
         {
             std::cout<<"Invalid Event Number\nPlease Enter Again: ";
         }
@@ -542,8 +516,8 @@ void delete_meeting(std::vector<Meeting>& meeting_holder,std::fstream &input)
             break;
     }
     
-    auto iterator_to_deleted=meeting_holder.begin();
-    meeting_holder.erase(iterator_to_deleted);
+    auto iterator_to_deleted=recruitment_holder.begin();
+    recruitment_holder.erase(iterator_to_deleted);
 
     try
     {
@@ -559,7 +533,7 @@ void delete_meeting(std::vector<Meeting>& meeting_holder,std::fstream &input)
             }
             else
             {
-                input<<meeting_holder;
+                input<<recruitment_holder;
             }
         }
     }

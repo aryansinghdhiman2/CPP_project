@@ -20,6 +20,12 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/other/event.txt
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/other/meeting.txt
     ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/other/recruitment.txt
+    ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/other/club.txt
+    ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)

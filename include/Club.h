@@ -22,11 +22,11 @@ class Club
     void display_description() const;
     Club(std::string name,std::string convener,std::string co_convener,std::string social_media_id,std::string description);
     friend void edit_club(std::vector<Club>& club_info ,std::fstream& club_file );
-    std::string get_name();
-    std::string get_convener();
-    std::string get_co_convener();
-    std::string get_social_media_id();
-    std::string get_description();
+    std::string get_name() const;
+    std::string get_convener() const;
+    std::string get_co_convener() const;
+    std::string get_social_media_id() const;
+    std::string get_description() const;
 };
 
 #endif
