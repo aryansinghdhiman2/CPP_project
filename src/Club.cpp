@@ -48,6 +48,7 @@ Club::Club(std::string name,std::string convener,std::string co_convener,std::st
     this->convener=convener;
     this->co_convener=co_convener;
     this->description=description;
+    this->social_media_id=social_media_id;
 }
 std::string Club:: get_name() const
 {
