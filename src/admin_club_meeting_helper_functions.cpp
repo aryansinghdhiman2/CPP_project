@@ -542,7 +542,7 @@ void delete_meeting(std::vector<Meeting>& meeting_holder,std::fstream &input)
             break;
     }
     
-    auto iterator_to_deleted=meeting_holder.begin();
+    auto iterator_to_deleted=meeting_holder.begin()+to_be_deleted;
     meeting_holder.erase(iterator_to_deleted);
 
     try

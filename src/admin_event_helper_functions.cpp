@@ -203,6 +203,7 @@ void delete_event(std::vector<Event>& event_holder,std::fstream &input)
             throw -1;
         else
         {
+            input.clear();
             input.open("event.txt",std::ios::out|std::ios::trunc|std::ios::in);
             if(!input.is_open())
             {

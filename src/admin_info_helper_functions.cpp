@@ -181,6 +181,7 @@ void delete_club(std::vector<Club>& club_info ,std::fstream& club_file )
             throw -1;
         else
         {
+            club_file.clear();
             club_file.open("club.txt",std::ios::out|std::ios::trunc|std::ios::in);
             if(!club_file.is_open())
             {

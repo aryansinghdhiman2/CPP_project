@@ -258,6 +258,7 @@ void add_recruitment(std::vector<Recruitment> &recruitment_holder,std::fstream &
         }
         else
         {
+            input.clear();
             input.open("recruitment.txt",std::ios::trunc|std::ios::out|std::ios::in);
             if(!input.is_open())
             {
@@ -471,6 +472,7 @@ void edit_recruitment(std::vector<Recruitment> &recruitment_holder,std::fstream 
         }
         else
         {
+            input.clear();
             input.open("recruitment.txt",std::ios::trunc|std::ios::out|std::ios::in);
             if(!input.is_open())
             {
@@ -516,7 +518,7 @@ void delete_recruitment(std::vector<Recruitment>& recruitment_holder,std::fstrea
             break;
     }
     
-    auto iterator_to_deleted=recruitment_holder.begin();
+    auto iterator_to_deleted=recruitment_holder.begin()+to_be_deleted;
     recruitment_holder.erase(iterator_to_deleted);
 
     try
@@ -526,6 +528,7 @@ void delete_recruitment(std::vector<Recruitment>& recruitment_holder,std::fstrea
             throw -1;
         else
         {
+            input.clear();
             input.open("event.txt",std::ios::out|std::ios::trunc|std::ios::in);
             if(!input.is_open())
             {
