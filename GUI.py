@@ -1,10 +1,13 @@
 from tkinter import *
 root= Tk()
-
 def club_window():
    club_win= Toplevel(root)
+   root.withdraw()
    club_win.geometry("750x500")
    club_win.title("Clubs")
+   def func():
+      club_win.destroy()
+      root.deiconify()
    main_frame= Frame(club_win,bg="#ffffff",height=300,width=700,borderwidth=1,relief=RIDGE)
    main_frame.pack(pady=100)
    main_frame.pack_propagate(0)
@@ -18,7 +21,7 @@ def club_window():
    recr_btn.grid(row=0, column=1)
    meet_btn= Button(btn_frame,text= "Meeting",font="timesnewroman 20",relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#666666',bg='#ffffff')
    meet_btn.grid(row=1, column=0,padx=4)
-   return_btn= Button(btn_frame,text= "Return",font="timesnewroman 20",relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#666666',bg='#ffffff',command=club_win.destroy)
+   return_btn= Button(btn_frame,text= "Return",font="timesnewroman 20",relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#666666',bg='#ffffff',command=func)
    return_btn.grid(row=1, column=1)
    info_btn.bind('<Enter>', on_enter)
    info_btn.bind('<Leave>', on_leave)
