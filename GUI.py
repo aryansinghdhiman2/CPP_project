@@ -41,7 +41,7 @@ def club_window():
    return_btn.bind('<Leave>', on_leave)
 
 def on_enter(e):
-   e.widget['background'] = '#999999'
+   e.widget['background'] = 'sky blue'
 def on_leave(e):
    e.widget['background'] = 'pale turquoise'
 
