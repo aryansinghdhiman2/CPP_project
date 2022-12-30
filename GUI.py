@@ -19,7 +19,7 @@ def club_window():
    main_frame= Frame(club_win,bg="pale turquoise",height=300,width=700,borderwidth=1,relief=RIDGE)
    main_frame.pack(pady=130)
    main_frame.pack_propagate(0)
-   heading= Label(main_frame,text="Club Menu",font=myFont, padx=15,pady=25,bg="pale turquoise").
+   heading= Label(main_frame,text="Club Menu",font=myFont, padx=15,pady=25,bg="pale turquoise")
    heading.pack()
    btn_frame= Frame(main_frame,bg="pale turquoise")
    btn_frame.pack(pady=20)
