@@ -81,13 +81,13 @@ def club_window():
     btn_frame=Frame(club_win,bg="#219ebc")
     btn_frame.place(x=0,y=45,height=50,relwidth=1)
     info= Button(btn_frame,text="Club Information",font=myFont2,width=25,height=1,relief=RIDGE,bg="#219ebc",bd=4,command=club_info)
-    info.grid(row=0,column=0,padx=20)
+    info.grid(row=0,column=0,padx=20,pady=3)
     meeting=Button(btn_frame,text="Club Meeting",font=myFont2,width=25,relief=RIDGE,bg="#219ebc",bd=4)
-    meeting.grid(row=0,column=1,padx=20)
+    meeting.grid(row=0,column=1,padx=20,pady=3)
     recr=Button(btn_frame,text="Club Recruitment",font=myFont2,width=25,relief=RIDGE,bg="#219ebc",bd=4)
-    recr.grid(row=0,column=2,padx=20)
+    recr.grid(row=0,column=2,padx=20,pady=3)
     exit=Button(btn_frame,text="Club Meeting",font=myFont2,width=25,relief=RIDGE,bg="#219ebc",bd=4)
-    exit.grid(row=0,column=3,padx=20)
+    exit.grid(row=0,column=3,padx=20,pady=3)
     
 
 header= Label(root,font=myFont,bg='#14213d',text="Clubs and Event Management System",fg="white")
