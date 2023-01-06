@@ -1,1 +1,1 @@
-aquamarine
+root.resizable(False,False)
