@@ -13,6 +13,12 @@ root.title("Clubs and Event Management System")
 # screen_width = root.winfo_screenwidth()
 # screen_height = root.winfo_screenheight()
 root.resizable(False,False)
+
+def club_window():
+    club_win= Toplevel(root)
+    root.withdraw()
+
+
 header= Label(root,font=myFont,bg='#14213d',text="Clubs and Event Management System",fg="white")
 header.place(x=0,y=0,relwidth=1,height=60)
 main_menu= Label(root,font=myFont,bg="#fca311",text="Main Menu",fg="white")
@@ -33,7 +39,7 @@ c3.pack_propagate(0)
 c4= Frame(root,height=250,width=225,bg="#023047")
 c4.place(x=1000,y=250)
 c4.pack_propagate(0)
-clubs_btn= Button(c1,text="Clubs",font=myFont1,relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#e5e5e5',bg='#fca311')
+clubs_btn= Button(c1,text="Clubs",font=myFont1,relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#e5e5e5',bg='#fca311',command=club_window)
 clubs_btn.pack(pady=15)
 Events_btn= Button(c2,text="Events",font=myFont1,relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#e5e5e5',bg='#fca311')
 Events_btn.pack(pady=15)
