@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.font import Font
+from tkinter import ttk
 def on_enter(e):
    e.widget['background'] = '#e5e5e5'
 def on_leave(e):
@@ -28,10 +29,54 @@ def club_window():
         manage_frame.place(x=0,y=100,width=480,height=540)
         display_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
         display_frame.place(x=500,y=100,height=540,width=760)
+
         l1=Label(manage_frame,text="Club name",font=myFont1,bg="#8ecae6")
         l1.grid(row=0,column=0,pady=30,padx=20)
-        name_entry=Entry(manage_frame,font=myFont3,width=20)
+
+        name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
         name_entry.grid(row=0,column=1)
+
+        l2=Label(manage_frame,text="Convener",font=myFont1,bg="#8ecae6")
+        l2.grid(row=1,column=0,pady=30,padx=20)
+
+        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        con_entry.grid(row=1,column=1)
+
+        l3=Label(manage_frame,text="Social Media",font=myFont1,bg="#8ecae6")
+        l3.grid(row=2,column=0,pady=30,padx=20)
+
+        sc_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        sc_entry.grid(row=2,column=1)
+
+        l4=Label(manage_frame,text="Description",font=myFont1,bg="#8ecae6")
+        l4.grid(row=3,column=0,pady=40,padx=20)
+
+        des_entry=Text(manage_frame,font=myFont3,width=20,height=4,relief=SUNKEN,bd=3)
+        des_entry.grid(row=3,column=1)
+
+        search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
+        search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
+        combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly")
+        combo_search['values']=("Club name","social media")
+        combo_search.grid(row=0,column=1,pady=10,padx=10)
+        srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        srch_entry.grid(row=0,column=2)
+        srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
+        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=4,padx=10)
+
+        display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
+        display2_frame.place(x=10,y=65,height=450,width=735)
+        table= ttk.Treeview(display2_frame,columns=("Club_Name","Social Media","Convener","Description"))
+        table.heading("Club_Name",text="Club Name")
+        table.heading("Social Media",text="Social Media")
+        table.heading("Convener",text="Convener")
+        table.heading("Description",text="Description")
+        table['show']="headings"
+        table.column("Club_Name",width=150)
+        table.column("Social Media",width=150)
+        table.column("Convener",width=150)
+        table.column("Description",width=300)
+        table.pack(fill=BOTH,expand=1)
 
     btn_frame=Frame(club_win,bg="#219ebc")
     btn_frame.place(x=0,y=45,height=50,relwidth=1)
