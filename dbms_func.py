@@ -34,18 +34,50 @@ def add_club(connection,data:dict):
     with connection.cursor() as cursor:
         cursor.execute(f"CLUB_PACK.INSERT_CLUB({data['Name']},{data['Convener']},{data['S_media']},{data['Description']});")
     connection.commit()
-def add_meeting(connection,data:dict):
-    with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.INSERT_MEETING({data['Name']},{data['Date']},{data['Venue']},{data['Description']});")
-    connection.commit()
 def add_recruitment(connection,data:dict):
     with connection.cursor() as cursor:
         cursor.execute(f"CLUB_PACK.INSERT_RECRUITMENT({data['Name']},{data['Date'],data['Venue']})")
+    connection.commit()
+def add_meeting(connection,data:dict):
+    with connection.cursor() as cursor:
+        cursor.execute(f"CLUB_PACK.INSERT_MEETING({data['Name']},{data['Date']},{data['Venue']},{data['Description']});")
     connection.commit()
 def add_event(connection,data:dict):
     with connection.cursor() as cursor:
         cursor.execute(f"CLUB_PACK.INSERT_EVENT({data['Name']},{data['Date']},{data['Venue']},{data['Description']},{data['Club']}")
     connection.commit()
-# for row in cursor.execute(""" select * from EMPLOYEE_20 """):
-#     print(f"{row[0]},{row[1]},{row[2]}")
 
+
+def update_club(connection,data:dict):
+    with connection.cursor() as cursor:
+        cursor.execute(f"CLUB_PACK.UPDATE_CLUB({data['Name']},{data['Convener']},{data['S_media']},{data['Description']});")
+    connection.commit()
+def update_recruitment(connection,data:dict):
+    with connection.cursor() as cursor:
+        cursor.execute(f"CLUB_PACK.UPDATE_RECRUITMENT({data['Name']},{data['Date'],data['Venue']})")
+    connection.commit()
+def update_meeting(connection,data:dict):
+    with connection.cursor() as cursor:
+        cursor.execute(f"CLUB_PACK.UPDATE_MEETING({data['Name']},{data['Date']},{data['Venue']},{data['Description']});")
+    connection.commit()
+def update_event(connection,data:dict):
+    with connection.cursor() as cursor:
+        cursor.execute(f"CLUB_PACK.UPDATE_EVENT({data['ID']},{data['Name']},{data['Date']},{data['Venue']},{data['Description']},{data['Club']}")
+    connection.commit()
+
+def delete_club(connection,data:dict):
+    with connection.cursor() as cursor:
+        cursor.execute(f"CLUB_PACK.DELETE_CLUB({data['Name']})")
+    connection.commit()
+def delete_recruitment(connection,data:dict):
+    with connection.cursor() as cursor:
+        cursor.execute(f"CLUB_PACK.DELETE_RECRUITMENT({data['Name']},{data['Date']})")
+    connection.commit()
+def delete_meeting(connection,data:dict):
+    with connection.cursor() as cursor:
+        cursor.execute(f"CLUB_PACK.DELETE_MEETING({data['Name']},{data['Date']}")
+    connection.commit()
+def delete_event(connection,data:dict):
+    with connection.cursor() as cursor:
+        cursor.execute(f"CLUB_PACK.DELETE_EVENT({data['ID']},{data['Date']}")
+    connection.commit()
