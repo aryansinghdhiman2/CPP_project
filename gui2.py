@@ -66,17 +66,17 @@ def club_window():
 
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=65,height=450,width=735)
-        table= ttk.Treeview(display2_frame,columns=("Club_Name","Social Media","Convener","Description"))
-        table.heading("Club_Name",text="Club Name")
-        table.heading("Social Media",text="Social Media")
-        table.heading("Convener",text="Convener")
-        table.heading("Description",text="Description")
-        table['show']="headings"
-        table.column("Club_Name",width=150)
-        table.column("Social Media",width=150)
-        table.column("Convener",width=150)
-        table.column("Description",width=300)
-        table.pack(fill=BOTH,expand=1)
+        clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Social Media","Convener","Description"))
+        clb_info_tb.heading("Club_Name",text="Club Name")
+        clb_info_tb.heading("Social Media",text="Social Media")
+        clb_info_tb.heading("Convener",text="Convener")
+        clb_info_tb.heading("Description",text="Description")
+        clb_info_tb['show']="headings"
+        clb_info_tb.column("Club_Name",width=150)
+        clb_info_tb.column("Social Media",width=150)
+        clb_info_tb.column("Convener",width=150)
+        clb_info_tb.column("Description",width=300)
+        clb_info_tb.pack(fill=BOTH,expand=1)
 
     def club_meeting():
         manage_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
@@ -120,17 +120,17 @@ def club_window():
 
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=65,height=450,width=735)
-        table= ttk.Treeview(display2_frame,columns=("c_name","m_date","venue","desc"))
-        table.heading("c_name",text="Club Name")
-        table.heading("m_date",text="Meeting Date")
-        table.heading("venue",text="Venue")
-        table.heading("desc",text="Description")
-        table['show']="headings"
-        table.column("c_name",width=150)
-        table.column("m_date",width=150)
-        table.column("venue",width=150)
-        table.column("desc",width=300)
-        table.pack(fill=BOTH,expand=1)
+        clb_meet_tb= ttk.Treeview(display2_frame,columns=("c_name","m_date","venue","desc"))
+        clb_meet_tb.heading("c_name",text="Club Name")
+        clb_meet_tb.heading("m_date",text="Meeting Date")
+        clb_meet_tb.heading("venue",text="Venue")
+        clb_meet_tb.heading("desc",text="Description")
+        clb_meet_tb['show']="headings"
+        clb_meet_tb.column("c_name",width=150)
+        clb_meet_tb.column("m_date",width=150)
+        clb_meet_tb.column("venue",width=150)
+        clb_meet_tb.column("desc",width=300)
+        clb_meet_tb.pack(fill=BOTH,expand=1)
 
     def club_recr():
         manage_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
@@ -168,15 +168,15 @@ def club_window():
 
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=65,height=450,width=735)
-        table= ttk.Treeview(display2_frame,columns=("c_name","r_date","venue"))
-        table.heading("c_name",text="Club Name")
-        table.heading("r_date",text="Recruitment Date")
-        table.heading("venue",text="Venue")
-        table['show']="headings"
-        table.column("c_name",width=150)
-        table.column("r_date",width=150)
-        table.column("venue",width=150)
-        table.pack(fill=BOTH,expand=1)
+        clb_rec_tb= ttk.Treeview(display2_frame,columns=("c_name","r_date","venue"))
+        clb_rec_tb.heading("c_name",text="Club Name")
+        clb_rec_tb.heading("r_date",text="Recruitment Date")
+        clb_rec_tb.heading("venue",text="Venue")
+        clb_rec_tb['show']="headings"
+        clb_rec_tb.column("c_name",width=150)
+        clb_rec_tb.column("r_date",width=150)
+        clb_rec_tb.column("venue",width=150)
+        clb_rec_tb.pack(fill=BOTH,expand=1)
 
 
 
