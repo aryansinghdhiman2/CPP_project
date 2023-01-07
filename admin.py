@@ -43,7 +43,7 @@ def login(root):
     Frame(frame,width=295,height=2,bg="black").place(x=25,y=177)
 
 
-    Button(frame,width=28,pady=7,text="Sign in",bg="#57a1f8",fg="white",border=0,font=("Microsoft YaHei UI Light",15,"bold"),command=signin).place(x=28,y=204)
-    exit=Button(frame,width=6,text="Exit",border=0,bg="white",cursor="hand2",fg="#57a1f8",font=("Microsoft YaHei UI Light",15,"bold"))
+    Button(frame,width=29,pady=7,text="Sign in",bg="#57a1f8",fg="white",border=0,font=("Microsoft YaHei UI Light",12,"bold"),command=signin).place(x=28,y=204)
+    exit=Button(frame,width=6,text="Exit",border=0,bg="#57a1f8",cursor="hand2",fg="white",font=("Microsoft YaHei UI Light",12,"bold"))
     exit.place(x=25,y=270)
     login_win.mainloop()   
