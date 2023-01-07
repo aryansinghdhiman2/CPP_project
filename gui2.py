@@ -18,7 +18,7 @@ root.resizable(False,False)
 
 def club_window():
     club_win= Toplevel(root)
-    root.withdraw()
+    #root.withdraw()
     club_win.geometry("1280x720")
     main_menu= Label(club_win,font=myFont,bg="#023047",text="Club Menu",fg="white")
     main_menu.place(x=0,y=0,relwidth=1,height=45)
@@ -78,15 +78,117 @@ def club_window():
         table.column("Description",width=300)
         table.pack(fill=BOTH,expand=1)
 
+    def club_meeting():
+        manage_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
+        manage_frame.place(x=0,y=100,width=480,height=540)
+        display_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
+        display_frame.place(x=500,y=100,height=540,width=760)
+
+        l1=Label(manage_frame,text="Club Name",font=myFont1,bg="#8ecae6")
+        l1.grid(row=0,column=0,pady=30,padx=20)
+
+        name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        name_entry.grid(row=0,column=1)
+
+        l2=Label(manage_frame,text="Meeting Date",font=myFont1,bg="#8ecae6")
+        l2.grid(row=1,column=0,pady=30,padx=20)
+
+        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        con_entry.grid(row=1,column=1)
+
+        l3=Label(manage_frame,text="Venue",font=myFont1,bg="#8ecae6")
+        l3.grid(row=2,column=0,pady=30,padx=20)
+
+        sc_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        sc_entry.grid(row=2,column=1)
+
+        l4=Label(manage_frame,text="Description",font=myFont1,bg="#8ecae6")
+        l4.grid(row=3,column=0,pady=40,padx=20)
+
+        des_entry=Text(manage_frame,font=myFont3,width=20,height=4,relief=SUNKEN,bd=3)
+        des_entry.grid(row=3,column=1)
+
+        search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
+        search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
+        combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly")
+        combo_search['values']=("Club name","Meeting date")
+        combo_search.grid(row=0,column=1,pady=10,padx=10)
+        srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        srch_entry.grid(row=0,column=2)
+        srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
+        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=4,padx=10)
+
+        display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
+        display2_frame.place(x=10,y=65,height=450,width=735)
+        table= ttk.Treeview(display2_frame,columns=("c_name","m_date","venue","desc"))
+        table.heading("c_name",text="Club Name")
+        table.heading("m_date",text="Meeting Date")
+        table.heading("venue",text="Venue")
+        table.heading("desc",text="Description")
+        table['show']="headings"
+        table.column("c_name",width=150)
+        table.column("m_date",width=150)
+        table.column("venue",width=150)
+        table.column("desc",width=300)
+        table.pack(fill=BOTH,expand=1)
+
+    def club_recr():
+        manage_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
+        manage_frame.place(x=0,y=100,width=480,height=540)
+        display_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
+        display_frame.place(x=500,y=100,height=540,width=760)
+
+        l1=Label(manage_frame,text="Club name",font=myFont1,bg="#8ecae6")
+        l1.grid(row=0,column=0,pady=30,padx=20)
+
+        name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        name_entry.grid(row=0,column=1)
+
+        l2=Label(manage_frame,text="Recruitment Date",font=myFont1,bg="#8ecae6")
+        l2.grid(row=1,column=0,pady=30,padx=20)
+
+        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        con_entry.grid(row=1,column=1)
+
+        l3=Label(manage_frame,text="Venue",font=myFont1,bg="#8ecae6")
+        l3.grid(row=2,column=0,pady=30,padx=20)
+
+        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        con_entry.grid(row=2,column=1)
+
+        search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
+        search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
+        combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly")
+        combo_search['values']=("Club Name","Recruitment Date")
+        combo_search.grid(row=0,column=1,pady=10,padx=10)
+        srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        srch_entry.grid(row=0,column=2)
+        srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
+        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=4,padx=10)
+
+        display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
+        display2_frame.place(x=10,y=65,height=450,width=735)
+        table= ttk.Treeview(display2_frame,columns=("c_name","r_date","venue"))
+        table.heading("c_name",text="Club Name")
+        table.heading("r_date",text="Recruitment Date")
+        table.heading("venue",text="Venue")
+        table['show']="headings"
+        table.column("c_name",width=150)
+        table.column("r_date",width=150)
+        table.column("venue",width=150)
+        table.pack(fill=BOTH,expand=1)
+
+
+
     btn_frame=Frame(club_win,bg="#219ebc")
     btn_frame.place(x=0,y=45,height=50,relwidth=1)
     info= Button(btn_frame,text="Club Information",font=myFont2,width=25,height=1,relief=RIDGE,bg="#219ebc",bd=4,command=club_info)
     info.grid(row=0,column=0,padx=20,pady=3)
-    meeting=Button(btn_frame,text="Club Meeting",font=myFont2,width=25,relief=RIDGE,bg="#219ebc",bd=4)
+    meeting=Button(btn_frame,text="Club Meeting",font=myFont2,width=25,relief=RIDGE,bg="#219ebc",bd=4,command=club_meeting)
     meeting.grid(row=0,column=1,padx=20,pady=3)
-    recr=Button(btn_frame,text="Club Recruitment",font=myFont2,width=25,relief=RIDGE,bg="#219ebc",bd=4)
+    recr=Button(btn_frame,text="Club Recruitment",font=myFont2,width=25,relief=RIDGE,bg="#219ebc",bd=4,command=club_recr)
     recr.grid(row=0,column=2,padx=20,pady=3)
-    exit=Button(btn_frame,text="Club Meeting",font=myFont2,width=25,relief=RIDGE,bg="#219ebc",bd=4)
+    exit=Button(btn_frame,text="Exit",font=myFont2,width=25,relief=RIDGE,bg="#219ebc",bd=4,command=club_win.destroy)
     exit.grid(row=0,column=3,padx=20,pady=3)
     
 
