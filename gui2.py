@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.font import Font
 from tkinter import ttk
+from event import event_window
 def on_enter(e):
    e.widget['background'] = '#e5e5e5'
 def on_leave(e):
@@ -214,7 +215,7 @@ c4.place(x=1000,y=250)
 c4.pack_propagate(0)
 clubs_btn= Button(c1,text="Clubs",font=myFont1,relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#e5e5e5',bg='#fca311',command=club_window)
 clubs_btn.pack(pady=15)
-Events_btn= Button(c2,text="Events",font=myFont1,relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#e5e5e5',bg='#fca311')
+Events_btn= Button(c2,text="Events",font=myFont1,relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#e5e5e5',bg='#fca311',command=lambda:event_window(root))
 Events_btn.pack(pady=15)
 admin_btn= Button(c3,text= "Admin",font=myFont1,relief=SOLID,borderwidth=1,height=1,width=12,activebackground='#e5e5e5',bg='#fca311')
 admin_btn.pack(pady=15)
