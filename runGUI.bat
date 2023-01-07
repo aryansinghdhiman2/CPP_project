@@ -1,2 +1,2 @@
 git pull origin main
-py GUI.py
+py gui2.py
