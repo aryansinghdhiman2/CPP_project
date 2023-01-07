@@ -2,3 +2,5 @@
 build
 .vs
 out
+.env
+__pycache__

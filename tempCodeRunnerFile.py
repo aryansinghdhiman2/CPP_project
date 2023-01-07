@@ -1,2 +1,8 @@
-manage_frame= Frame(club_win,bd=4,bg="yellow",relief=RIDGE)
-    # manage_frame.place(x=20,y=100,width=450,height=460)
+cur.execute("""CREATE TABLE EVENT(E_ID NUMBER PRIMARY KEY AUTOINCREMENT,
+                    E_NAME VARCHAR(20) CONSTRAINT EVENT_NAME_NN NOT NULL,
+                    E_DATE TIMESTAMP,
+                    VENUE VARCHAR(30) CONSTRAINT EVENT_VENUE_NN NOT NULL,
+                    DESCRIPTION VARCHAR(50) CONSTRAINT EVENT_DESC_NN NOT NULL,
+                    C_NAME VARCHAR(20),
+                    CONSTRAINT EVENT_C_NAME_FK FOREIGN KEY(C_NAME) REFERENCES CLUB(CLUB_NAME)
+                    ); """)

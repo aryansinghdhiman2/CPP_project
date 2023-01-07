@@ -1,0 +1,71 @@
+import sqlite3
+
+cur = sqlite3.connect('test.db').cursor()
+
+# cur.execute("CREATE TABLE CLUB (CLUB_NAME VARCHAR(20) CONSTRAINT CLUB_NAME_NN NOT NULL,CONVENER VARCHAR(20) CONSTRAINT CLUB_CONVENER_NN NOT NULL,S_MEDIA VARCHAR(20),CLUB_DESCRIPTION VARCHAR(50) CONSTRAINT CLUB_DESCRIPTION_NN NOT NULL,CONSTRAINT CLUB_NAME_PK PRIMARY KEY(CLUB_NAME));")
+
+# cur.execute("CREATE TABLE CO_CONVENER(CO_NAME VARCHAR(20),C_NAME VARCHAR(20),CONSTRAINT CO_CONVENER_NAME_FK FOREIGN KEY(C_NAME) REFERENCES CLUB(CLUB_NAME),CONSTRAINT CO_CONV_CO_NAME_PK PRIMARY KEY(CO_NAME,C_NAME));")
+# cur.execute("CREATE TABLE RECRUITMENT(C_NAME VARCHAR(20),R_DATE TIMESTAMP,VENUE VARCHAR(30) CONSTRAINT RECRUITMENT_VENUE_NN NOT NULL,CONSTRAINT RECRUITMENT_PK PRIMARY KEY(C_NAME,R_DATE),CONSTRAINT RECRUITMENT_CNAME_FK FOREIGN KEY(C_NAME) REFERENCES CLUB(CLUB_NAME));")
+# cur.execute("CREATE TABLE MEETING(C_NAME VARCHAR(20),M_DATE TIMESTAMP,VENUE VARCHAR(30) CONSTRAINT MEETING_VENUE_NN NOT NULL,DESCRIPTION VARCHAR(50) CONSTRAINT MEETING_DESC_NN NOT NULL,CONSTRAINT MEETING_PK PRIMARY KEY(C_NAME,M_DATE),CONSTRAINT MEETING_CNAME_FK FOREIGN KEY(C_NAME) REFERENCES CLUB(CLUB_NAME));")
+# cur.execute("""CREATE TABLE EVENT(E_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+#                     E_NAME VARCHAR(20) CONSTRAINT EVENT_NAME_NN NOT NULL,
+#                     E_DATE TIMESTAMP,
+#                     VENUE VARCHAR(30) CONSTRAINT EVENT_VENUE_NN NOT NULL,
+#                     DESCRIPTION VARCHAR(50) CONSTRAINT EVENT_DESC_NN NOT NULL,
+#                     C_NAME VARCHAR(20),
+#                     CONSTRAINT EVENT_C_NAME_FK FOREIGN KEY(C_NAME) REFERENCES CLUB(CLUB_NAME)
+#                     ); """)
+# cur.execute("""CREATE INDEX RECRUITMENT_IDX ON RECRUITMENT(R_DATE); """)
+# cur.execute('CREATE INDEX MEETING_IDX ON MEETING(M_DATE);')
+# cur.execute('CREATE INDEX EVENT_IDX ON EVENT(E_DATE);')
+# cur.execute(""" CREATE TABLE AUDIT_TRAIL_CLUB(ACTION VARCHAR(10) CONSTRAINT AT_CLUB_ACTION_NN NOT NULL,
+#                                 DATE_TIME TIMESTAMP CONSTRAINT AT_CLUB_DATE_TIME_NN NOT NULL,
+#                                 CLUB_NAME VARCHAR(20),
+#                                 CONVENER VARCHAR(20),
+#                                 S_MEDIA VARCHAR(20),
+#                                 CLUB_DESCRIPTION VARCHAR(50)
+#                                 ); """)
+# cur.execute(""" CREATE TABLE AUDIT_TRAIL_CO_CONVENER(ACTION VARCHAR(10) CONSTRAINT AT_CC_ACTION_NN NOT NULL,
+#                                 DATE_TIME TIMESTAMP CONSTRAINT AT_CC_DATE_TIME_NN NOT NULL,
+#                                 CO_NAME VARCHAR(20),
+#                                 C_NAME VARCHAR(20)
+#                                 );""")
+# cur.execute(""" CREATE TABLE AUDIT_TRAIL_RECRUITMENT(ACTION VARCHAR(10) CONSTRAINT AT_RECRUIT_ACTION_NN NOT NULL,
+#                                 DATE_TIME TIMESTAMP CONSTRAINT AT_RECRUIT_DATE_TIME_NN NOT NULL,
+#                                 C_NAME VARCHAR(20),
+#                                 R_DATE TIMESTAMP,
+#                                 VENUE VARCHAR(30)
+#                                 ); """)
+# cur.execute("""CREATE TABLE AUDIT_TRAIL_MEETING(ACTION VARCHAR(10) CONSTRAINT AT_MEETING_ACTION_NN NOT NULL,
+#                                 DATE_TIME TIMESTAMP CONSTRAINT AT_MEETING_DATE_TIME_NN NOT NULL,
+#                                 C_NAME VARCHAR(20),
+#                                 M_DATE TIMESTAMP,
+#                                 VENUE VARCHAR(30)
+#                                 ); """)
+# cur.execute(""" CREATE TABLE AUDIT_TRAIL_EVENT(ACTION VARCHAR(10) CONSTRAINT AT_EVENT_ACTION_NN NOT NULL,
+#                                 DATE_TIME TIMESTAMP CONSTRAINT AT_EVENT_DATE_TIME_NN NOT NULL,
+#                                 E_ID INTEGER,
+#                                 E_NAME VARCHAR(20),
+#                                 E_DATE TIMESTAMP,
+#                                 VENUE VARCHAR(30),
+#                                 DESCRIPTION VARCHAR(50),
+#                                 C_NAME VARCHAR(20)
+#                                 );""")
+# cur.execute(""" CREATE TRIGGER TRAIL_CLUB
+#     AFTER
+#     INSERT OR UPDATE OR DELETE ON CLUB
+#     FOR EACH ROW
+#     DECLARE
+#         ACT AUDIT_TRAIL_CLUB.ACTION%TYPE;
+#     BEGIN
+#         IF INSERTING THEN ACT := 'INSERT';
+#         ELSIF UPDATING THEN ACT:='UPDATE';
+#         ELSE ACT:= 'DELETE';
+#         END IF;
+#         INSERT INTO AUDIT_TRAIL_CLUB VALUES(ACT,
+#                                 SYSTIMESTAMP,
+#                                 :OLD.CLUB_NAME,
+#                                 :OLD.CONVENER,
+#                                 :OLD.S_MEDIA,
+#                                 :OLD.CLUB_DESCRIPTION);
+# END TRAIL_CLUB;""")
