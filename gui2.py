@@ -68,7 +68,7 @@ def club_window():
 
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=65,height=450,width=735)
-        clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Social Media","Convener","Description"))
+        clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Convener","Social Media","Description"))
         clb_info_tb.heading("Club_Name",text="Club Name")
         clb_info_tb.heading("Convener",text="Convener")
         clb_info_tb.heading("Social Media",text="Social Media")
