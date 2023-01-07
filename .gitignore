@@ -6,3 +6,4 @@ out
 __pycache__
 "__pycache__”
 __pycache__/admin.cpython-310.pyc
+env.py
