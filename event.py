@@ -14,9 +14,9 @@ def event_window(root):
     # manage_frame.place(x=20,y=100,width=450,height=460)
     
     manage_frame= Frame(event_win,bd=4,bg="#8ecae6",relief=RIDGE)
-    manage_frame.place(x=0,y=100,width=480,height=540)
+    manage_frame.place(x=0,y=60,width=480,height=615)
     display_frame= Frame(event_win,bd=4,bg="#8ecae6",relief=RIDGE)
-    display_frame.place(x=500,y=100,height=540,width=760)
+    display_frame.place(x=500,y=60,height=615,width=760)
 
     l1=Label(manage_frame,text="Event ID",font=myfont1,bg="#8ecae6")
     l1.grid(row=0,column=0,pady=30,padx=20)
@@ -42,10 +42,10 @@ def event_window(root):
     des_entry=Entry(manage_frame,font=myfont3,width=20,relief=SUNKEN,bd=3)
     des_entry.grid(row=3,column=1)
 
-    l4=Label(manage_frame,text="Club Name",font=myfont1,bg="#8ecae6")
+    l4=Label(manage_frame,text="Description",font=myfont1,bg="#8ecae6")
     l4.grid(row=4,column=0,pady=40,padx=20)
 
-    des_entry=Entry(manage_frame,font=myfont3,width=20,relief=SUNKEN,bd=3)
+    des_entry=Text(manage_frame,font=myfont3,width=20,height=4,relief=SUNKEN,bd=3)
     des_entry.grid(row=4,column=1)
 
     search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myfont1)
@@ -59,17 +59,17 @@ def event_window(root):
     showall= Button(display_frame,text="Show All",font=myfont3,bd=3,relief=GROOVE).grid(row=0,column=4,padx=10)
 
     display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
-    display2_frame.place(x=10,y=65,height=450,width=735)
-    event_tb= ttk.Treeview(display2_frame,columns=("e_id","e_name","e_date","venue","c_name"))
+    display2_frame.place(x=10,y=65,height=525,width=735)
+    event_tb= ttk.Treeview(display2_frame,columns=("e_id","e_name","e_date","venue","desc"))
     event_tb.heading("e_id",text="Event ID")
     event_tb.heading("e_name",text="Event Name")
     event_tb.heading("e_date",text="Date")
     event_tb.heading("venue",text="Venue")
-    event_tb.heading("c_name",text="Club Name")
+    event_tb.heading("desc",text="Description")
     event_tb['show']="headings"
-    event_tb.column("e_id",width=150)
-    event_tb.column("e_name",width=150)
-    event_tb.column("e_name",width=150)
-    event_tb.column("venue",width=300)
-    event_tb.column("c_name",width=300)
+    event_tb.column("e_id",width=100)
+    event_tb.column("e_name",width=125)
+    event_tb.column("e_date",width=100)
+    event_tb.column("venue",width=150)
+    event_tb.column("desc",width=275)
     event_tb.pack(fill=BOTH,expand=1)
