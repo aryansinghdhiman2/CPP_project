@@ -1,11 +1,11 @@
 import oracledb
 from env import user,password,dsn
 def create_connection(user,password,dsn):
+    global connection
     connection = oracledb.connect(
         user=user,
         password=password,
         dsn=dsn)
-
     return connection
 
 create_connection(user,password,dsn)

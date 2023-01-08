@@ -2,8 +2,9 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.font import Font
 from tkinter import ttk
+from dbms_func import *
 
-def admin_window(login_win):
+def admin_window(login_win,connection):
     admin_win=Toplevel(login_win)
     login_win.withdraw()
     admin_win.geometry("1280x720")
@@ -25,23 +26,25 @@ def admin_window(login_win):
         manage_frame.place(x=0,y=100,width=480,height=540)
         display_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
         display_frame.place(x=500,y=100,height=540,width=760)
-
+        name_var= StringVar()
+        conv_var= StringVar()
+        scl_var=StringVar()
         l1=Label(manage_frame,text="Club name",font=myFont1,bg="#8ecae6")
         l1.grid(row=0,column=0,pady=30,padx=20)
 
-        name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
         name_entry.grid(row=0,column=1)
 
         l2=Label(manage_frame,text="Convener",font=myFont1,bg="#8ecae6")
         l2.grid(row=1,column=0,pady=30,padx=20)
 
-        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=conv_var)
         con_entry.grid(row=1,column=1)
 
         l3=Label(manage_frame,text="Social Media",font=myFont1,bg="#8ecae6")
         l3.grid(row=2,column=0,pady=30,padx=20)
 
-        sc_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        sc_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=scl_var)
         sc_entry.grid(row=2,column=1)
 
         l4=Label(manage_frame,text="Description",font=myFont1,bg="#8ecae6")
@@ -53,7 +56,10 @@ def admin_window(login_win):
         btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
         btn_frame2.place(x=5,y=450,width=460)
 
-        add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=0,padx=20,pady=10)
+        data= {"Name":name_var,"Convener":conv_var,"S_media":scl_var,"Description":des_entry}
+
+
+        add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7,command=lambda:add_club(connection,data)).grid(row=0,column=0,padx=20,pady=10)
         update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=1,padx=20,pady=10)
         del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=2,padx=20,pady=10)
         clr_btn= Button(btn_frame2,text="Clear",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=3,padx=20,pady=10)
@@ -210,7 +216,7 @@ def admin_window(login_win):
     admin_win.mainloop()
 
 
-def login(root):
+def login(root,connection):
     login_win=Toplevel(root)
     login_win.title("Login")
     login_win.geometry("925x500+300+200")
@@ -221,7 +227,7 @@ def login(root):
         username=user.get()
         password=code.get()
         if username=="admin" and password=="root":
-            admin_window(login_win)
+            admin_window(login_win,connection)
 
     img= PhotoImage(file="login.png")
     Label(login_win,image=img,bg="white").place(x=50,y=50 )
@@ -232,13 +238,13 @@ def login(root):
 
     user= Entry(frame,width=25,fg="black",border=0,bg="white",font=("Microsoft YaHei UI Light",11))
     user.place(x=30,y=80)
-    user.insert(0,"Username")
+    user.insert(0,"admin")
     
     Frame(frame,width=295,height=2,bg="black").place(x=25,y=107)
 
     code= Entry(frame,width=25,fg="black",border=0,bg="white",font=("Microsoft YaHei UI Light",11))
     code.place(x=30,y=150)
-    code.insert(0,"Password")
+    code.insert(0,"root")
     Frame(frame,width=295,height=2,bg="black").place(x=25,y=177)
 
 
