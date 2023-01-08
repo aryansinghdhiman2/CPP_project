@@ -72,52 +72,52 @@ def search_event(connection,table,SEARCH_STRING,TO_SEARCH):
 
 def add_club(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.INSERT_CLUB({data['Name']},{data['Convener']},{data['S_media']},{data['Description']});")
+        cursor.execute(f"BEGIN CLUB_PACK.INSERT_CLUB('{data['Name'].get()}','{data['Convener'].get()}','{data['S_media'].get()}','{data['Description'].get('1.0','end-1c')}'); END;")
     connection.commit()
 def add_recruitment(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.INSERT_RECRUITMENT({data['Name']},{data['Date'],data['Venue']})")
+        cursor.execute(f"BEGIN CLUB_PACK.INSERT_RECRUITMENT('{data['Name'].get()}','{data['Date'].get()}','{data['Venue'].get()}'); END;")
     connection.commit()
 def add_meeting(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.INSERT_MEETING({data['Name']},{data['Date']},{data['Venue']},{data['Description']});")
+        cursor.execute(f"BEGIN CLUB_PACK.INSERT_MEETING('{data['Name'].get()}','{data['Date'].get()}','{data['Venue'].get()}','{data['Description'].get('1.0','end-1c')}'); END;")
     connection.commit()
 def add_event(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.INSERT_EVENT({data['Name']},{data['Date']},{data['Venue']},{data['Description']},{data['Club']}")
+        cursor.execute(f"BEGIN CLUB_PACK.INSERT_EVENT('{data['Name'].get()}','{data['Date'].get()}','{data['Venue'].get()}','{data['Description'].get('1.0','end-1c')}','{data['Club'].get()}'); END;")
     connection.commit()
 
 
 def update_club(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.UPDATE_CLUB({data['Name']},{data['Convener']},{data['S_media']},{data['Description']});")
+        cursor.execute(f"BEGIN CLUB_PACK.UPDATE_CLUB('{data['Name'].get()}','{data['Convener'].get()}','{data['S_media'].get()}','{data['Description'].get('1.0','end-1c')}'); END;")
     connection.commit()
 def update_recruitment(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.UPDATE_RECRUITMENT({data['Name']},{data['Date'],data['Venue']})")
+        cursor.execute(f"BEGIN CLUB_PACK.UPDATE_RECRUITMENT('{data['Name'].get()}','{data['Date'].get()}','{data['Venue'].get()}'); END;")
     connection.commit()
 def update_meeting(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.UPDATE_MEETING({data['Name']},{data['Date']},{data['Venue']},{data['Description']});")
+        cursor.execute(f"BEGIN CLUB_PACK.UPDATE_MEETING('{data['Name'].get()}','{data['Date'].get()}','{data['Venue'].get()}','{data['Description'].get('1.0','end-1c')}'); END;")
     connection.commit()
 def update_event(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.UPDATE_EVENT({data['ID']},{data['Name']},{data['Date']},{data['Venue']},{data['Description']},{data['Club']}")
+        cursor.execute(f"BEGIN CLUB_PACK.UPDATE_EVENT({data['ID'].get()},'{data['Name'].get()}','{data['Date'].get()}','{data['Venue'].get()}','{data['Description'].get('1.0','end-1c')}','{data['Club'].get()}'); END;")
     connection.commit()
 
 def delete_club(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.DELETE_CLUB({data['Name']})")
+        cursor.execute(f"BEGIN CLUB_PACK.DELETE_CLUB({data['Name'].get()}); END;")
     connection.commit()
 def delete_recruitment(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.DELETE_RECRUITMENT({data['Name']},{data['Date']})")
+        cursor.execute(f"BEGIN CLUB_PACK.DELETE_RECRUITMENT({data['Name'].get()},{data['Date'].get()}); END;")
     connection.commit()
 def delete_meeting(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.DELETE_MEETING({data['Name']},{data['Date']}")
+        cursor.execute(f"BEGIN CLUB_PACK.DELETE_MEETING('{data['Name'].get()}','{data['Date'].get()}'); END;")
     connection.commit()
 def delete_event(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"CLUB_PACK.DELETE_EVENT({data['ID']},{data['Date']}")
+        cursor.execute(f"BEGIN CLUB_PACK.DELETE_EVENT({data['ID'].get()},'{data['Date'].get()}'); END;")
     connection.commit()

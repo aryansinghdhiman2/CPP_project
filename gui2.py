@@ -11,7 +11,7 @@ def on_enter(e):
 def on_leave(e):
    e.widget['background'] = '#fca311'
 
-create_connection(user,password,dsn)
+connection=create_connection(user,password,dsn)
 
 root= Tk()
 myFont= Font(family="Calibri",size=30,weight="bold")
