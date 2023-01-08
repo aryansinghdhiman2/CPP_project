@@ -1,12 +1,14 @@
 import oracledb
 from env import user,password,dsn
-def create_cursor(user,password,dsn):
+def create_connection(user,password,dsn):
     connection = oracledb.connect(
         user=user,
         password=password,
         dsn=dsn)
 
     return connection
+
+create_connection(user,password,dsn)
 
 def fetch_club_info(connection,table):
     table.delete(table.get_children())
@@ -29,6 +31,44 @@ def fetch_events(connection,table):
     for row in cursor.execute("SELECT * FROM MEETING;"):
         table.insert('','end',values=row)
 
+def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
+    table.delete(table.get_children())
+    cursor = connection.cursor()
+    if(SEARCH_STRING == 'Club name'):
+        string = 'CLUB_NAME'
+    else:
+        string = 'S_MEDIA'
+    for row in cursor.execute(f'SELECT * FROM CLUB WHERE {string} = {TO_SEARCH}'):
+        table.insert('','end',values=row)
+def search_meeting(connection,table,SEARCH_STRING,TO_SEARCH):
+    table.delete(table.get_children())
+    cursor = connection.cursor()
+    if(SEARCH_STRING == 'Club name'):
+        string = 'C_NAME'
+    else:
+        string = 'M_DATE'
+    for row in cursor.execute(f'SELECT * FROM MEETING WHERE {string} = {TO_SEARCH}'):
+        table.insert('','end',values=row)
+def search_recruitment(connection,table,SEARCH_STRING,TO_SEARCH):
+    table.delete(table.get_children())
+    cursor = connection.cursor()
+    if(SEARCH_STRING == 'Club name'):
+        string = 'C_NAME'
+    else:
+        string = 'R_DATE'
+    for row in cursor.execute(f'SELECT * FROM RECRUITMENT WHERE {string} = {TO_SEARCH}'):
+        table.insert('','end',values=row)
+def search_event(connection,table,SEARCH_STRING,TO_SEARCH):
+    table.delete(table.get_children())
+    cursor = connection.cursor()
+    if(SEARCH_STRING == 'Club name'):
+        string = 'C_NAME'
+    elif(SEARCH_STRING == 'Date'):
+        string = 'S_MEDIA'
+    else: 
+        string = 'E_ID'
+    for row in cursor.execute(f'SELECT * FROM CLUB WHERE {string} = {TO_SEARCH}'):
+        table.insert('','end',values=row)    
 
 def add_club(connection,data:dict):
     with connection.cursor() as cursor:
