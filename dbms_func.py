@@ -8,7 +8,7 @@ def create_connection(user,password,dsn):
 
     return connection
 
-create_connection(user,password,dsn)
+# create_connection(user,password,dsn)
 
 def fetch_club_info(connection,table):
     table.delete(table.get_children())
