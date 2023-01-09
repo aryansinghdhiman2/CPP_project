@@ -107,7 +107,7 @@ def update_event(connection,data:dict):
 
 def delete_club(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"BEGIN CLUB_PACK.DELETE_CLUB({data['Name'].get()}); END;")
+        cursor.execute(f"BEGIN CLUB_PACK.DELETE_CLUB('{data['Name'].get()}'); END;")
     connection.commit()
 def delete_recruitment(connection,data:dict):
     with connection.cursor() as cursor:

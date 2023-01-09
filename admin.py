@@ -60,8 +60,8 @@ def admin_window(login_win,connection):
 
 
         add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7,command=lambda:add_club(connection,data)).grid(row=0,column=0,padx=20,pady=10)
-        update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=1,padx=20,pady=10)
-        del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=2,padx=20,pady=10)
+        update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7,command=lambda:update_club(connection,data)).grid(row=0,column=1,padx=20,pady=10)
+        del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7,command=lambda:delete_club(connection,data)).grid(row=0,column=2,padx=20,pady=10)
         clr_btn= Button(btn_frame2,text="Clear",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=3,padx=20,pady=10)
         # search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
         # search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
@@ -71,11 +71,14 @@ def admin_window(login_win,connection):
         # srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
         # srch_entry.grid(row=0,column=2)
         # srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
-        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=0,padx=20,pady=10)
-
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=65,height=450,width=735)
         clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Convener","Social Media","Description"))
+        #showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_info(connection,clb_info_tb)).grid(row=0,column=0,padx=20,pady=10)
+
+        # display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
+        # display2_frame.place(x=10,y=65,height=450,width=735)
+        #clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Convener","Social Media","Description"))
         clb_info_tb.heading("Club_Name",text="Club Name")
         clb_info_tb.heading("Convener",text="Convener")
         clb_info_tb.heading("Social Media",text="Social Media")
@@ -86,6 +89,7 @@ def admin_window(login_win,connection):
         clb_info_tb.column("Social Media",width=150)
         clb_info_tb.column("Description",width=300)
         clb_info_tb.pack(fill=BOTH,expand=1)
+        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_info(connection,clb_info_tb)).grid(row=0,column=0,padx=20,pady=10)
 
     def club_meeting():
         manage_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
