@@ -17,17 +17,20 @@ def fetch_club_info(connection,table):
     for row in cursor.execute("SELECT * FROM CLUB"):
         table.insert('','end',values=row)
 def fetch_club_meeting(connection,table):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     for row in cursor.execute("SELECT * FROM MEETING"):
         table.insert('','end',values=row)
 def fetch_club_recruitment(connection,table):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     for row in cursor.execute("SELECT * FROM RECRUITMENT"):
         table.insert('','end',values=row) 
 def fetch_events(connection,table):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     for row in cursor.execute("SELECT * FROM MEETING"):
         table.insert('','end',values=row)
@@ -112,7 +115,7 @@ def delete_club(connection,data:dict):
     connection.commit()
 def delete_recruitment(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"BEGIN CLUB_PACK.DELETE_RECRUITMENT({data['Name'].get()},{data['Date'].get()}); END;")
+        cursor.execute(f"BEGIN CLUB_PACK.DELETE_RECRUITMENT('{data['Name'].get()}','{data['Date'].get()}'); END;")
     connection.commit()
 def delete_meeting(connection,data:dict):
     with connection.cursor() as cursor:

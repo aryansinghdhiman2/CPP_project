@@ -96,23 +96,25 @@ def admin_window(login_win,connection):
         manage_frame.place(x=0,y=100,width=480,height=540)
         display_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
         display_frame.place(x=500,y=100,height=540,width=760)
-
+        name_var= StringVar()
+        date_var= StringVar()
+        ven_var=StringVar()
         l1=Label(manage_frame,text="Club Name",font=myFont1,bg="#8ecae6")
         l1.grid(row=0,column=0,pady=30,padx=20)
 
-        name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
         name_entry.grid(row=0,column=1)
 
         l2=Label(manage_frame,text="Meeting Date",font=myFont1,bg="#8ecae6")
         l2.grid(row=1,column=0,pady=30,padx=20)
 
-        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=date_var)
         con_entry.grid(row=1,column=1)
 
         l3=Label(manage_frame,text="Venue",font=myFont1,bg="#8ecae6")
         l3.grid(row=2,column=0,pady=30,padx=20)
 
-        sc_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        sc_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=ven_var)
         sc_entry.grid(row=2,column=1)
 
         l4=Label(manage_frame,text="Description",font=myFont1,bg="#8ecae6")
@@ -123,9 +125,11 @@ def admin_window(login_win,connection):
         btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
         btn_frame2.place(x=5,y=450,width=460)
 
-        add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=0,padx=20,pady=10)
-        update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=1,padx=20,pady=10)
-        del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=2,padx=20,pady=10)
+        data= {"Name":name_var,"Date":date_var,"Venue":ven_var,"Description":des_entry}
+
+        add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7,command=lambda:add_meeting(connection,data)).grid(row=0,column=0,padx=20,pady=10)
+        update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7,command=lambda:update_meeting(connection,data)).grid(row=0,column=1,padx=20,pady=10)
+        del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7,command=lambda:delete_meeting(connection,data)).grid(row=0,column=2,padx=20,pady=10)
         clr_btn= Button(btn_frame2,text="Clear",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=3,padx=20,pady=10)
         # search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
         # search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
@@ -135,7 +139,7 @@ def admin_window(login_win,connection):
         # srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
         # srch_entry.grid(row=0,column=2)
         # srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
-        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=4,padx=20,pady=10)
+        #showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=4,padx=20,pady=10)
 
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=65,height=450,width=735)
@@ -150,36 +154,40 @@ def admin_window(login_win,connection):
         clb_meet_tb.column("venue",width=150)
         clb_meet_tb.column("desc",width=300)
         clb_meet_tb.pack(fill=BOTH,expand=1)
+        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_meeting(connection,clb_meet_tb)).grid(row=0,column=4,padx=20,pady=10)
 
     def club_recr():
         manage_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
         manage_frame.place(x=0,y=100,width=480,height=540)
         display_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
         display_frame.place(x=500,y=100,height=540,width=760)
-
+        name_var= StringVar()
+        date_var= StringVar()
+        ven_var=StringVar()
         l1=Label(manage_frame,text="Club name",font=myFont1,bg="#8ecae6")
         l1.grid(row=0,column=0,pady=30,padx=20)
 
-        name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
         name_entry.grid(row=0,column=1)
 
         l2=Label(manage_frame,text="Recruitment Date",font=myFont1,bg="#8ecae6")
         l2.grid(row=1,column=0,pady=30,padx=20)
 
-        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=date_var)
         con_entry.grid(row=1,column=1)
 
         l3=Label(manage_frame,text="Venue",font=myFont1,bg="#8ecae6")
         l3.grid(row=2,column=0,pady=30,padx=20)
 
-        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=ven_var)
         con_entry.grid(row=2,column=1)
         btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
         btn_frame2.place(x=5,y=450,width=460)
+        data= {"Name":name_var,"Date":date_var,"Venue":ven_var}
 
-        add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=0,padx=20,pady=10)
-        update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=1,padx=20,pady=10)
-        del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=2,padx=20,pady=10)
+        add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7,command=lambda:add_recruitment(connection,data)).grid(row=0,column=0,padx=20,pady=10)
+        update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7,command=lambda:update_recruitment(connection,data)).grid(row=0,column=1,padx=20,pady=10)
+        del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7,command=lambda:delete_recruitment(connection,data)).grid(row=0,column=2,padx=20,pady=10)
         clr_btn= Button(btn_frame2,text="Clear",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=3,padx=20,pady=10)
         # search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
         # search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
@@ -189,7 +197,7 @@ def admin_window(login_win,connection):
         # srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
         # srch_entry.grid(row=0,column=2)
         # srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
-        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=4,padx=20,pady=10)
+        #showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=4,padx=20,pady=10)
 
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=65,height=450,width=735)
@@ -202,6 +210,7 @@ def admin_window(login_win,connection):
         clb_rec_tb.column("r_date",width=150)
         clb_rec_tb.column("venue",width=150)
         clb_rec_tb.pack(fill=BOTH,expand=1)
+        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_recruitment(connection,clb_rec_tb)).grid(row=0,column=4,padx=20,pady=10)
 
 
 
