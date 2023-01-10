@@ -64,8 +64,10 @@ def club_window():
 
         search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
         search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
+
         srch_var=StringVar()
         srch_entry_var=StringVar()
+
         combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly",textvariable=srch_var)
         combo_search['values']=("Club name","social media")
         combo_search.grid(row=0,column=1,pady=10,padx=10)
@@ -95,6 +97,9 @@ def club_window():
         display_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
         display_frame.place(x=500,y=100,height=540,width=760)
 
+        srch_var=StringVar()
+        srch_entry_var=StringVar()
+
         l1=Label(manage_frame,text="Club Name",font=myFont1,bg="#8ecae6")
         l1.grid(row=0,column=0,pady=30,padx=20)
 
@@ -121,12 +126,12 @@ def club_window():
 
         search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
         search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
-        combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly")
+        combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly",textvariable=srch_var)
         combo_search['values']=("Club name","Meeting date")
         combo_search.grid(row=0,column=1,pady=10,padx=10)
-        srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
         srch_entry.grid(row=0,column=2)
-        srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
+       
         
 
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
@@ -142,12 +147,16 @@ def club_window():
         clb_meet_tb.column("venue",width=150)
         clb_meet_tb.column("desc",width=300)
         clb_meet_tb.pack(fill=BOTH,expand=1)
+        srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE,command=lambda:search_meeting(connection,clb_meet_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
         showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_meeting(connection,clb_meet_tb)).grid(row=0,column=4,padx=10)
     def club_recr():
         manage_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
         manage_frame.place(x=0,y=100,width=480,height=540)
         display_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
         display_frame.place(x=500,y=100,height=540,width=760)
+
+        srch_var=StringVar()
+        srch_entry_var=StringVar()
 
         l1=Label(manage_frame,text="Club name",font=myFont1,bg="#8ecae6")
         l1.grid(row=0,column=0,pady=30,padx=20)
@@ -169,12 +178,12 @@ def club_window():
 
         search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
         search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
-        combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly")
+        combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly",textvariable=srch_var)
         combo_search['values']=("Club Name","Recruitment Date")
         combo_search.grid(row=0,column=1,pady=10,padx=10)
-        srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+        srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
         srch_entry.grid(row=0,column=2)
-        srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
+        
         
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=65,height=450,width=735)
@@ -187,6 +196,7 @@ def club_window():
         clb_rec_tb.column("r_date",width=150)
         clb_rec_tb.column("venue",width=150)
         clb_rec_tb.pack(fill=BOTH,expand=1)
+        srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE,command=lambda:search_recruitment(connection,clb_rec_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
         showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_recruitment(connection,clb_rec_tb)).grid(row=0,column=4,padx=10)
 
 
