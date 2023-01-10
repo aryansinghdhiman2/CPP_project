@@ -32,7 +32,7 @@ def fetch_events(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM MEETING"):
+    for row in cursor.execute("SELECT * FROM EVENT"):
         table.insert('','end',values=row)
 
 def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
