@@ -17,23 +17,27 @@ def fetch_club_info(connection,table):
     for row in cursor.execute("SELECT * FROM CLUB"):
         table.insert('','end',values=row)
 def fetch_club_meeting(connection,table):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     for row in cursor.execute("SELECT * FROM MEETING"):
         table.insert('','end',values=row)
 def fetch_club_recruitment(connection,table):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     for row in cursor.execute("SELECT * FROM RECRUITMENT"):
         table.insert('','end',values=row) 
 def fetch_events(connection,table):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     for row in cursor.execute("SELECT * FROM MEETING"):
         table.insert('','end',values=row)
 
 def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     if(SEARCH_STRING == 'Club name'):
         string = 'CLUB_NAME'
@@ -42,7 +46,8 @@ def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
     for row in cursor.execute(f'SELECT * FROM CLUB WHERE {string} = {TO_SEARCH}'):
         table.insert('','end',values=row)
 def search_meeting(connection,table,SEARCH_STRING,TO_SEARCH):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     if(SEARCH_STRING == 'Club name'):
         string = 'C_NAME'
@@ -51,7 +56,8 @@ def search_meeting(connection,table,SEARCH_STRING,TO_SEARCH):
     for row in cursor.execute(f'SELECT * FROM MEETING WHERE {string} = {TO_SEARCH}'):
         table.insert('','end',values=row)
 def search_recruitment(connection,table,SEARCH_STRING,TO_SEARCH):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     if(SEARCH_STRING == 'Club name'):
         string = 'C_NAME'
@@ -60,7 +66,8 @@ def search_recruitment(connection,table,SEARCH_STRING,TO_SEARCH):
     for row in cursor.execute(f'SELECT * FROM RECRUITMENT WHERE {string} = {TO_SEARCH}'):
         table.insert('','end',values=row)
 def search_event(connection,table,SEARCH_STRING,TO_SEARCH):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
     if(SEARCH_STRING == 'Club name'):
         string = 'C_NAME'
