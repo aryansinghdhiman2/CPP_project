@@ -36,9 +36,10 @@ def fetch_events(connection,table):
         table.insert('','end',values=row)
 
 def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
-    table.delete(table.get_children())
+    for item in table.get_children():
+        table.delete(item)
     cursor = connection.cursor()
-    if(SEARCH_STRING == 'Club name'):
+    if(SEARCH_STRING.get() == 'Club name'):
         string = 'CLUB_NAME'
     else:
         string = 'S_MEDIA'
