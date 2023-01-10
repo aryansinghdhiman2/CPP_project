@@ -59,7 +59,7 @@ def search_recruitment(connection,table,SEARCH_STRING,TO_SEARCH):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    if(SEARCH_STRING.get() == 'Club name'):
+    if(SEARCH_STRING.get() == 'Club Name'):
         string = 'C_NAME'
     else:
         string = 'R_DATE'
