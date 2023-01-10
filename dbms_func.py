@@ -53,7 +53,7 @@ def search_meeting(connection,table,SEARCH_STRING,TO_SEARCH):
         string = 'C_NAME'
     else:
         string = 'M_DATE'
-    for row in cursor.execute(f'SELECT * FROM MEETING WHERE {string} = {TO_SEARCH.get()}'):
+    for row in cursor.execute(f"SELECT * FROM MEETING WHERE {string} = '{TO_SEARCH.get()}'"):
         table.insert('','end',values=row)
 def search_recruitment(connection,table,SEARCH_STRING,TO_SEARCH):
     for item in table.get_children():
@@ -63,7 +63,7 @@ def search_recruitment(connection,table,SEARCH_STRING,TO_SEARCH):
         string = 'C_NAME'
     else:
         string = 'R_DATE'
-    for row in cursor.execute(f'SELECT * FROM RECRUITMENT WHERE {string} = {TO_SEARCH.get()}'):
+    for row in cursor.execute(f"SELECT * FROM RECRUITMENT WHERE {string} = '{TO_SEARCH.get()}'"):
         table.insert('','end',values=row)
 def search_event(connection,table,SEARCH_STRING,TO_SEARCH):
     for item in table.get_children():
@@ -75,7 +75,7 @@ def search_event(connection,table,SEARCH_STRING,TO_SEARCH):
         string = 'S_MEDIA'
     else: 
         string = 'E_ID'
-    for row in cursor.execute(f'SELECT * FROM CLUB WHERE {string} = {TO_SEARCH.get()}'):
+    for row in cursor.execute(f"SELECT * FROM EVENT WHERE {string} = '{TO_SEARCH.get()}'"):
         table.insert('','end',values=row)    
 
 def add_club(connection,data:dict):
