@@ -56,16 +56,18 @@ def event_window(root,connection):
 
     l4=Label(manage_frame,text="Club",font=myfont1,bg="#8ecae6")
     l4.grid(row=5,column=0,pady=20,padx=20)
-    des_entry=Entry(manage_frame,font=myfont3,width=20,relief=SUNKEN,bd=3,textvariable=clb_var)
-    des_entry.grid(row=5,column=1)
-    data= {"Name":name_var,"Date":date_var,"Venue":ven_var,"Description":des_entry,"Club":name_var}
+    clb_entry=Entry(manage_frame,font=myfont3,width=20,relief=SUNKEN,bd=3,textvariable=clb_var)
+    clb_entry.grid(row=5,column=1)
+    
+    data= {"Name":name_var,"Date":date_var,"Venue":ven_var,"Description":des_entry,"Club":clb_var}
+    data2= {"ID":id_var,"Name":name_var,"Date":date_var,"Venue":ven_var,"Description":des_entry,"Club":clb_var}
 
     btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
     btn_frame2.place(x=5,y=500,width=460)
 
     add_btn= Button(btn_frame2,text="Add",font=myfont3,bg="#ffffff",width=7,command=lambda:add_event(connection,data)).grid(row=0,column=0,padx=20,pady=10)
-    update_btn= Button(btn_frame2,text="Update",font=myfont3,bg="#ffffff",width=7,command=lambda:update_event(connection,data)).grid(row=0,column=1,padx=20,pady=10)
-    del_btn= Button(btn_frame2,text="Delete",font=myfont3,bg="#ffffff",width=7,command=lambda:delete_event(connection,data)).grid(row=0,column=2,padx=20,pady=10)
+    update_btn= Button(btn_frame2,text="Update",font=myfont3,bg="#ffffff",width=7,command=lambda:update_event(connection,data2)).grid(row=0,column=1,padx=20,pady=10)
+    del_btn= Button(btn_frame2,text="Delete",font=myfont3,bg="#ffffff",width=7,command=lambda:delete_event(connection,data2)).grid(row=0,column=2,padx=20,pady=10)
     clr_btn= Button(btn_frame2,text="Clear",font=myfont3,bg="#ffffff",width=7).grid(row=0,column=3,padx=20,pady=10)
 
 
