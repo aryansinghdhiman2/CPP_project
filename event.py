@@ -24,6 +24,9 @@ def event_window(root,connection):
     date_var=StringVar()
     ven_var=StringVar()
     clb_var=StringVar()
+
+    srch_var=StringVar()
+    srch_entry_var=StringVar()
     l1=Label(manage_frame,text="Event ID",font=myfont1,bg="#8ecae6")
     l1.grid(row=0,column=0,pady=20,padx=20)
 
@@ -74,12 +77,12 @@ def event_window(root,connection):
 
     search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myfont1)
     search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
-    combo_search= ttk.Combobox(display_frame,width=10,font=myfont2,state="readonly")
+    combo_search= ttk.Combobox(display_frame,width=10,font=myfont2,state="readonly",textvariable=srch_var)
     combo_search['values']=("Event ID","Date","Club Name")
     combo_search.grid(row=0,column=1,pady=10,padx=10)
-    srch_entry=Entry(display_frame,font=myfont3,width=20,relief=SUNKEN,bd=3)
+    srch_entry=Entry(display_frame,font=myfont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
     srch_entry.grid(row=0,column=2)
-    srch_btn=Button(display_frame,text="Search",font=myfont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
+    
     #showall= Button(display_frame,text="Show All",font=myfont3,bd=3,relief=GROOVE,command=lamdba:fetch_events(connection,)).grid(row=0,column=4,padx=10)
 
     display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
@@ -99,4 +102,5 @@ def event_window(root,connection):
     event_tb.column("desc",width=190)
     event_tb.column("club",width=100)
     event_tb.pack(fill=BOTH,expand=1)
+    srch_btn=Button(display_frame,text="Search",font=myfont3,bd=3,relief=GROOVE,command=lambda:search_event(connection,event_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
     showall= Button(display_frame,text="Show All",font=myfont3,bd=3,relief=GROOVE,command=lambda:fetch_events(connection,event_tb)).grid(row=0,column=4,padx=10)
