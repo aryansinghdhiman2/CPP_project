@@ -32,14 +32,14 @@ def fetch_events(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM MEETING"):
+    for row in cursor.execute("SELECT * FROM EVENT"):
         table.insert('','end',values=row)
 
 def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    if(SEARCH_STRING == 'Club name'):
+    if(SEARCH_STRING.get() == 'Club name'):
         string = 'CLUB_NAME'
     else:
         string = 'S_MEDIA'
@@ -119,7 +119,7 @@ def delete_club(connection,data:dict):
     connection.commit()
 def delete_recruitment(connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.execute(f"BEGIN CLUB_PACK.DELETE_RECRUITMENT({data['Name'].get()},{data['Date'].get()}); END;")
+        cursor.execute(f"BEGIN CLUB_PACK.DELETE_RECRUITMENT('{data['Name'].get()}','{data['Date'].get()}'); END;")
     connection.commit()
 def delete_meeting(connection,data:dict):
     with connection.cursor() as cursor:
