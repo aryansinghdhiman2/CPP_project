@@ -73,24 +73,25 @@ def club_window():
     def club_meeting():
         
         display_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
-        display_frame.place(x=500,y=100,height=540,width=760)
+        display_frame.place(x=25,y=115,height=540,width=1215)
 
         srch_var=StringVar()
         srch_entry_var=StringVar()
 
-        
-        search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
-        search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
-        combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly",textvariable=srch_var)
+        srch_frame= Frame(display_frame,bd=2,bg="#219ebc",relief=FLAT)
+        srch_frame.place(x=290,y=10)
+        search_lbl= Label(srch_frame,text="Search by",bg="#219ebc",font=myFont4,fg="white")
+        search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=10)
+        combo_search= ttk.Combobox(srch_frame,width=10,font=myFont2,state="readonly",textvariable=srch_var)
         combo_search['values']=("Club name","Meeting date")
         combo_search.grid(row=0,column=1,pady=10,padx=10)
-        srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
+        srch_entry=Entry(srch_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
         srch_entry.grid(row=0,column=2)
        
         
 
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
-        display2_frame.place(x=10,y=65,height=450,width=735)
+        display2_frame.place(x=10,y=70,height=450,width=1185)
         clb_meet_tb= ttk.Treeview(display2_frame,columns=("c_name","m_date","venue","desc"))
         clb_meet_tb.heading("c_name",text="Club Name")
         clb_meet_tb.heading("m_date",text="Meeting Date")
@@ -102,13 +103,13 @@ def club_window():
         clb_meet_tb.column("venue",width=150)
         clb_meet_tb.column("desc",width=300)
         clb_meet_tb.pack(fill=BOTH,expand=1)
-        srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE,command=lambda:search_meeting(connection,clb_meet_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
-        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_meeting(connection,clb_meet_tb)).grid(row=0,column=4,padx=10)
+        srch_btn=Button(srch_frame,text="Search",font=myFont5,bd=3,bg="#219ebc",fg="white",relief=RAISED,command=lambda:search_meeting(connection,clb_meet_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
+        showall= Button(srch_frame,text="Show All",font=myFont5,bd=3,bg="#219ebc",fg="white",relief=RAISED,command=lambda:fetch_club_meeting(connection,clb_meet_tb)).grid(row=0,column=4,padx=10)
     def club_recr():
         # manage_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
         # manage_frame.place(x=0,y=100,width=480,height=540)
         display_frame= Frame(club_win,bd=4,bg="#8ecae6",relief=RIDGE)
-        display_frame.place(x=500,y=100,height=540,width=760)
+        display_frame.place(x=25,y=115,height=540,width=1215)
 
         srch_var=StringVar()
         srch_entry_var=StringVar()
@@ -130,18 +131,19 @@ def club_window():
 
         # con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
         # con_entry.grid(row=2,column=1)
-
-        search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
-        search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
-        combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly",textvariable=srch_var)
+        srch_frame= Frame(display_frame,bd=2,bg="#219ebc",relief=FLAT)
+        srch_frame.place(x=290,y=10)
+        search_lbl= Label(srch_frame,text="Search by",bg="#219ebc",font=myFont4,fg="white")
+        search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=10)
+        combo_search= ttk.Combobox(srch_frame,width=10,font=myFont2,state="readonly",textvariable=srch_var)
         combo_search['values']=("Club Name","Recruitment Date")
         combo_search.grid(row=0,column=1,pady=10,padx=10)
-        srch_entry=Entry(display_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
+        srch_entry=Entry(srch_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
         srch_entry.grid(row=0,column=2)
         
         
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
-        display2_frame.place(x=10,y=65,height=450,width=735)
+        display2_frame.place(x=10,y=70,height=450,width=1185)
         clb_rec_tb= ttk.Treeview(display2_frame,columns=("c_name","r_date","venue"))
         clb_rec_tb.heading("c_name",text="Club Name")
         clb_rec_tb.heading("r_date",text="Recruitment Date")
@@ -151,8 +153,8 @@ def club_window():
         clb_rec_tb.column("r_date",width=150)
         clb_rec_tb.column("venue",width=150)
         clb_rec_tb.pack(fill=BOTH,expand=1)
-        srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE,command=lambda:search_recruitment(connection,clb_rec_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
-        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_recruitment(connection,clb_rec_tb)).grid(row=0,column=4,padx=10)
+        srch_btn=Button(srch_frame,text="Search",font=myFont5,bd=3,fg="white",bg="#219ebc",relief=RAISED,command=lambda:search_recruitment(connection,clb_rec_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
+        showall= Button(srch_frame,text="Show All",font=myFont5,bd=3,fg="white",bg="#219ebc",relief=RAISED,command=lambda:fetch_club_recruitment(connection,clb_rec_tb)).grid(row=0,column=4,padx=10)
 
 
 
