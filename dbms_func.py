@@ -1,6 +1,6 @@
 import oracledb
 from env import user,password,dsn
-oracledb.init_oracle_client()
+# oracledb.init_oracle_client()
 def create_connection(user,password,dsn):
     connection = oracledb.connect(
         user=user,
@@ -19,7 +19,7 @@ def create_connection(user,password,dsn):
 # conn.commit()
 # conn.close()
 
-def fetch_full_club_info(connection,table):
+def fetch_full_club_info(connection:oracledb.Connection,table):
     for item in table.get_children():
         table.delete(item)
     with connection.cursor() as curs:
