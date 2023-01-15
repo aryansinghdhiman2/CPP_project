@@ -26,6 +26,7 @@ def admin_window(login_win,connection):
         manage_frame.place(x=0,y=100,width=480,height=540)
         display_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
         display_frame.place(x=500,y=100,height=540,width=760)
+        global name_var
         name_var= StringVar()
         conv_var= StringVar()
         scl_var=StringVar()
@@ -109,25 +110,27 @@ def admin_window(login_win,connection):
         if combo_search.get()=="Co convener details":
             manage_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
             manage_frame.place(x=0,y=100,width=480,height=540)
-            
+            con1_var=StringVar()
+            con2_var=StringVar()
             #combo_search.grid(row=0,column=0,pady=10,padx=10)
             l1=Label(manage_frame,text="Convener 1",font=myFont1,bg="#8ecae6")
             l1.grid(row=1,column=0,pady=30,padx=20)
 
-            name1_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+            name1_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con1_var)
             name1_entry.grid(row=1,column=1)
 
             l2=Label(manage_frame,text="Convener 2",font=myFont1,bg="#8ecae6")
             l2.grid(row=2,column=0,pady=30,padx=20)
 
-            name2_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3)
+            name2_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con2_var)
             name2_entry.grid(row=2,column=1)
             btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
             btn_frame2.place(x=5,y=450,width=460)
-
-            add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=0,padx=25,pady=10)
-            update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=1,padx=25,pady=10)
-            del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=2,padx=25,pady=10)
+            data1= {"Conv_name":con1_var,"Club_name":name_var}
+            data2= {"Conv_name":con2_var,"Club_name":name_var}
+            add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7,command=lambda:add_co_convener2(connection,data1,data2)).grid(row=0,column=0,padx=25,pady=10)
+            #update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=1,padx=25,pady=10)
+            del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7,command=lambda:delete_co_convener(connection,data1)).grid(row=0,column=2,padx=25,pady=10)
 
     def club_meeting():
         manage_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
