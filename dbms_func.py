@@ -160,7 +160,7 @@ def update_co_convener(connection:oracledb.Connection,data:dict):
     connection.commit()
 def delete_club(connection:oracledb.Connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.callproc("CLUB_PACK.DELETE_CO_CONVENER",parameters=[data['Conv_name'].get(),data['Club_name'].get()])
+        # cursor.execute(f"DELETE FROM CO_CONVENER WHERE C_NAME = '{data['Name'].get()}'")
         cursor.execute(f"BEGIN CLUB_PACK.DELETE_CLUB('{data['Name'].get()}'); END;")
     connection.commit()
 def delete_recruitment(connection,data:dict):
