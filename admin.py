@@ -26,7 +26,7 @@ def admin_window(login_win,connection):
         manage_frame.place(x=0,y=100,width=480,height=540)
         display_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
         display_frame.place(x=500,y=100,height=540,width=760)
-        global name_var
+    
         name_var= StringVar()
         conv_var= StringVar()
         scl_var=StringVar()
@@ -44,25 +44,25 @@ def admin_window(login_win,connection):
 
 
         l1=Label(manage_frame,text="Club name",font=myFont1,bg="#8ecae6")
-        l1.grid(row=1,column=0,pady=25,padx=20)
+        l1.grid(row=1,column=0,pady=25,padx=20,sticky="w")
 
         name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
         name_entry.grid(row=1,column=1)
 
         l2=Label(manage_frame,text="Convener",font=myFont1,bg="#8ecae6")
-        l2.grid(row=2,column=0,pady=25,padx=20)
+        l2.grid(row=2,column=0,pady=25,padx=20,sticky="w")
 
         con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=conv_var)
         con_entry.grid(row=2,column=1)
 
         l3=Label(manage_frame,text="Social Media",font=myFont1,bg="#8ecae6")
-        l3.grid(row=2,column=0,pady=25,padx=20)
+        l3.grid(row=3,column=0,pady=25,padx=20,sticky="w")
 
         sc_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=scl_var)
         sc_entry.grid(row=3,column=1)
 
         l4=Label(manage_frame,text="Description",font=myFont1,bg="#8ecae6")
-        l4.grid(row=3,column=0,pady=35,padx=20)
+        l4.grid(row=4,column=0,pady=35,padx=20,sticky="w")
 
         des_entry=Text(manage_frame,font=myFont3,width=20,height=4,relief=SUNKEN,bd=3)
         des_entry.grid(row=4,column=1)
@@ -112,18 +112,26 @@ def admin_window(login_win,connection):
             manage_frame.place(x=0,y=100,width=480,height=540)
             con1_var=StringVar()
             con2_var=StringVar()
+            name_var=StringVar()
             #combo_search.grid(row=0,column=0,pady=10,padx=10)
             l1=Label(manage_frame,text="Convener 1",font=myFont1,bg="#8ecae6")
-            l1.grid(row=1,column=0,pady=30,padx=20)
+            l1.grid(row=1,column=0,pady=30,padx=20,sticky="w")
 
             name1_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con1_var)
             name1_entry.grid(row=1,column=1)
 
             l2=Label(manage_frame,text="Convener 2",font=myFont1,bg="#8ecae6")
-            l2.grid(row=2,column=0,pady=30,padx=20)
+            l2.grid(row=2,column=0,pady=30,padx=20,sticky="w")
 
             name2_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con2_var)
             name2_entry.grid(row=2,column=1)
+
+            l2=Label(manage_frame,text="Club Name",font=myFont1,bg="#8ecae6")
+            l2.grid(row=3,column=0,pady=30,padx=20,sticky="w")
+
+            name2_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
+            name2_entry.grid(row=3,column=1)
+
             btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
             btn_frame2.place(x=5,y=450,width=460)
             data1= {"Conv_name":con1_var,"Club_name":name_var}
@@ -141,25 +149,25 @@ def admin_window(login_win,connection):
         date_var= StringVar()
         ven_var=StringVar()
         l1=Label(manage_frame,text="Club Name",font=myFont1,bg="#8ecae6")
-        l1.grid(row=0,column=0,pady=30,padx=20)
+        l1.grid(row=0,column=0,pady=30,padx=20,sticky="w")
 
         name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
         name_entry.grid(row=0,column=1)
 
         l2=Label(manage_frame,text="Meeting Date",font=myFont1,bg="#8ecae6")
-        l2.grid(row=1,column=0,pady=30,padx=20)
+        l2.grid(row=1,column=0,pady=30,padx=20,sticky="w")
 
         con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=date_var)
         con_entry.grid(row=1,column=1)
 
         l3=Label(manage_frame,text="Venue",font=myFont1,bg="#8ecae6")
-        l3.grid(row=2,column=0,pady=30,padx=20)
+        l3.grid(row=2,column=0,pady=30,padx=20,sticky="w")
 
         sc_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=ven_var)
         sc_entry.grid(row=2,column=1)
 
         l4=Label(manage_frame,text="Description",font=myFont1,bg="#8ecae6")
-        l4.grid(row=3,column=0,pady=40,padx=20)
+        l4.grid(row=3,column=0,pady=40,padx=20,sticky="w")
 
         des_entry=Text(manage_frame,font=myFont3,width=20,height=4,relief=SUNKEN,bd=3)
         des_entry.grid(row=3,column=1)
@@ -206,19 +214,19 @@ def admin_window(login_win,connection):
         date_var= StringVar()
         ven_var=StringVar()
         l1=Label(manage_frame,text="Club name",font=myFont1,bg="#8ecae6")
-        l1.grid(row=0,column=0,pady=30,padx=20)
+        l1.grid(row=0,column=0,pady=30,padx=20,sticky="w")
 
         name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
         name_entry.grid(row=0,column=1)
 
         l2=Label(manage_frame,text="Recruitment Date",font=myFont1,bg="#8ecae6")
-        l2.grid(row=1,column=0,pady=30,padx=20)
+        l2.grid(row=1,column=0,pady=30,padx=20,sticky="w")
 
         con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=date_var)
         con_entry.grid(row=1,column=1)
 
         l3=Label(manage_frame,text="Venue",font=myFont1,bg="#8ecae6")
-        l3.grid(row=2,column=0,pady=30,padx=20)
+        l3.grid(row=2,column=0,pady=30,padx=20,sticky="w")
 
         con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=ven_var)
         con_entry.grid(row=2,column=1)
