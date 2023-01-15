@@ -46,19 +46,19 @@ def fetch_club_meeting(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM MEETING"):
+    for row in cursor.execute("SELECT * FROM MEETING ORDER BY M_DATE"):
         table.insert('','end',values=row)
 def fetch_club_recruitment(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM RECRUITMENT"):
+    for row in cursor.execute("SELECT * FROM RECRUITMENT ORDER BY R_DATE"):
         table.insert('','end',values=row) 
 def fetch_events(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM EVENT"):
+    for row in cursor.execute("SELECT * FROM EVENT ORDER BY E_DATE"):
         table.insert('','end',values=row)
 
 def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
@@ -75,10 +75,10 @@ def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
                    row.CLUB_DESCRIPTION
                 )
         if(SEARCH_STRING.get() == 'Club name'):
-            if(row_val(0)==TO_SEARCH.get()):
+            if(row_val[0]==TO_SEARCH.get()):
                 table.insert('','end',values=row_val)
         else:
-            if(row_val(3)==TO_SEARCH.get()):
+            if(row_val[3]==TO_SEARCH.get()):
                 table.insert('','end',values=row_val)
 def search_meeting(connection,table,SEARCH_STRING,TO_SEARCH):
     for item in table.get_children():
