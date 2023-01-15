@@ -26,32 +26,46 @@ def admin_window(login_win,connection):
         manage_frame.place(x=0,y=100,width=480,height=540)
         display_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
         display_frame.place(x=500,y=100,height=540,width=760)
+        global name_var
         name_var= StringVar()
         conv_var= StringVar()
         scl_var=StringVar()
+        top_frame=Frame(manage_frame,bg="#8ecae6")
+        top_frame.grid(row=0,column=0)
+        slct_lbl= Label(top_frame,text="Select",bg="#8ecae6",font=myFont1,fg="black")
+        slct_lbl.grid(row=0,column=0,padx=10,pady=8)
+        global combo_search
+        combo_search= ttk.Combobox(top_frame,width=10,font=myFont3,state="readonly")
+        combo_search['values']=("Club details","Co convener details")
+        combo_search.grid(row=0,column=1,pady=8)
+        combo_search.current(0)
+        combo_search.bind("<<ComboboxSelected>>",co_convener)
+
+
+
         l1=Label(manage_frame,text="Club name",font=myFont1,bg="#8ecae6")
-        l1.grid(row=0,column=0,pady=30,padx=20)
+        l1.grid(row=1,column=0,pady=25,padx=20)
 
         name_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
-        name_entry.grid(row=0,column=1)
+        name_entry.grid(row=1,column=1)
 
         l2=Label(manage_frame,text="Convener",font=myFont1,bg="#8ecae6")
-        l2.grid(row=1,column=0,pady=30,padx=20)
+        l2.grid(row=2,column=0,pady=25,padx=20)
 
         con_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=conv_var)
-        con_entry.grid(row=1,column=1)
+        con_entry.grid(row=2,column=1)
 
         l3=Label(manage_frame,text="Social Media",font=myFont1,bg="#8ecae6")
-        l3.grid(row=2,column=0,pady=30,padx=20)
+        l3.grid(row=2,column=0,pady=25,padx=20)
 
         sc_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=scl_var)
-        sc_entry.grid(row=2,column=1)
+        sc_entry.grid(row=3,column=1)
 
         l4=Label(manage_frame,text="Description",font=myFont1,bg="#8ecae6")
-        l4.grid(row=3,column=0,pady=40,padx=20)
+        l4.grid(row=3,column=0,pady=35,padx=20)
 
         des_entry=Text(manage_frame,font=myFont3,width=20,height=4,relief=SUNKEN,bd=3)
-        des_entry.grid(row=3,column=1)
+        des_entry.grid(row=4,column=1)
 
         btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
         btn_frame2.place(x=5,y=450,width=460)
@@ -90,6 +104,33 @@ def admin_window(login_win,connection):
         clb_info_tb.column("Description",width=300)
         clb_info_tb.pack(fill=BOTH,expand=1)
         showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_info(connection,clb_info_tb)).grid(row=0,column=0,padx=20,pady=10)
+
+
+    def co_convener(event):
+        if combo_search.get()=="Co convener details":
+            manage_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
+            manage_frame.place(x=0,y=100,width=480,height=540)
+            con1_var=StringVar()
+            con2_var=StringVar()
+            #combo_search.grid(row=0,column=0,pady=10,padx=10)
+            l1=Label(manage_frame,text="Convener 1",font=myFont1,bg="#8ecae6")
+            l1.grid(row=1,column=0,pady=30,padx=20)
+
+            name1_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con1_var)
+            name1_entry.grid(row=1,column=1)
+
+            l2=Label(manage_frame,text="Convener 2",font=myFont1,bg="#8ecae6")
+            l2.grid(row=2,column=0,pady=30,padx=20)
+
+            name2_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con2_var)
+            name2_entry.grid(row=2,column=1)
+            btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
+            btn_frame2.place(x=5,y=450,width=460)
+            data1= {"Conv_name":con1_var,"Club_name":name_var}
+            data2= {"Conv_name":con2_var,"Club_name":name_var}
+            add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7,command=lambda:add_co_convener2(connection,data1,data2)).grid(row=0,column=0,padx=25,pady=10)
+            #update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=1,padx=25,pady=10)
+            del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7,command=lambda:delete_co_convener(connection,data1)).grid(row=0,column=2,padx=25,pady=10)
 
     def club_meeting():
         manage_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
@@ -214,6 +255,8 @@ def admin_window(login_win,connection):
 
 
 
+    
+    
     btn_frame=Frame(admin_win,bg="#219ebc")
     btn_frame.place(x=0,y=45,height=50,relwidth=1)
     info= Button(btn_frame,text="Club Information",font=myFont2,width=25,height=1,relief=RIDGE,bg="#219ebc",bd=4,command=club_info)
@@ -265,3 +308,7 @@ def login(root,connection):
     exit=Button(frame,width=6,text="Exit",border=0,bg="#57a1f8",cursor="hand2",fg="white",font=("Microsoft YaHei UI Light",12,"bold"),command=login_win.destroy)
     exit.place(x=25,y=270)
     login_win.mainloop()   
+
+
+
+  

@@ -134,7 +134,9 @@ def add_event(connection,data:dict):
     with connection.cursor() as cursor:
         cursor.execute(f"BEGIN CLUB_PACK.INSERT_EVENT('{data['Name'].get()}','{data['Date'].get()}','{data['Venue'].get()}','{data['Description'].get('1.0','end-1c')}','{data['Club'].get()}'); END;")
     connection.commit()
-
+def add_co_convener2(connection,data1,data2):
+    add_co_convener(connection,data1)
+    add_co_convener(connection,data2)
 
 def update_club(connection,data:dict):
     with connection.cursor() as cursor:
@@ -173,7 +175,7 @@ def delete_event(connection,data:dict):
     with connection.cursor() as cursor:
         cursor.execute(f"BEGIN CLUB_PACK.DELETE_EVENT('{data['ID'].get()}','{data['Date'].get()}'); END;")
     connection.commit()
-def delete_event(connection:oracledb.Connection,data:dict):
+def delete_co_convener(connection:oracledb.Connection,data:dict):
     with connection.cursor() as cursor:
         cursor.callproc("CLUB_PACK.DELETE_CO_CONVENER",parameters=[data['Conv_name'].get(),data['Club_name'].get()])
     connection.commit()
