@@ -46,19 +46,19 @@ def fetch_club_meeting(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM MEETING ORDER BY M_DATE"):
+    for row in cursor.execute("SELECT * FROM MEETING ORDER BY M_DATE DESC"):
         table.insert('','end',values=row)
 def fetch_club_recruitment(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM RECRUITMENT ORDER BY R_DATE"):
+    for row in cursor.execute("SELECT * FROM RECRUITMENT ORDER BY R_DATE DESC"):
         table.insert('','end',values=row) 
 def fetch_events(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM EVENT ORDER BY E_DATE"):
+    for row in cursor.execute("SELECT * FROM EVENT ORDER BY E_DATE DESC"):
         table.insert('','end',values=row)
 
 def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
