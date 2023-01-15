@@ -114,22 +114,22 @@ def admin_window(login_win,connection):
             con2_var=StringVar()
             name_var=StringVar()
             #combo_search.grid(row=0,column=0,pady=10,padx=10)
-            l1=Label(manage_frame,text="Convener 1",font=myFont1,bg="#8ecae6")
+            l1=Label(manage_frame,text="Club Name",font=myFont1,bg="#8ecae6")
             l1.grid(row=1,column=0,pady=30,padx=20,sticky="w")
 
-            name1_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con1_var)
+            name1_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
             name1_entry.grid(row=1,column=1)
 
-            l2=Label(manage_frame,text="Convener 2",font=myFont1,bg="#8ecae6")
+            l2=Label(manage_frame,text="Convener 1",font=myFont1,bg="#8ecae6")
             l2.grid(row=2,column=0,pady=30,padx=20,sticky="w")
 
-            name2_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con2_var)
+            name2_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con1_var)
             name2_entry.grid(row=2,column=1)
 
-            l2=Label(manage_frame,text="Club Name",font=myFont1,bg="#8ecae6")
+            l2=Label(manage_frame,text="Convener 2",font=myFont1,bg="#8ecae6")
             l2.grid(row=3,column=0,pady=30,padx=20,sticky="w")
 
-            name2_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=name_var)
+            name2_entry=Entry(manage_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=con2_var)
             name2_entry.grid(row=3,column=1)
 
             btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
