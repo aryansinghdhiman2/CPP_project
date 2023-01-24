@@ -1,6 +1,6 @@
 import oracledb
 from env import user,password,dsn
-oracledb.init_oracle_client()
+# oracledb.init_oracle_client()
 def create_connection(user,password,dsn):
     connection = oracledb.connect(
         user=user,
@@ -19,7 +19,7 @@ def create_connection(user,password,dsn):
 # conn.commit()
 # conn.close()
 
-def fetch_full_club_info(connection,table):
+def fetch_full_club_info(connection:oracledb.Connection,table):
     for item in table.get_children():
         table.delete(item)
     with connection.cursor() as curs:
@@ -46,19 +46,19 @@ def fetch_club_meeting(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM MEETING ORDER BY M_DATE"):
+    for row in cursor.execute("SELECT * FROM MEETING ORDER BY M_DATE DESC"):
         table.insert('','end',values=row)
 def fetch_club_recruitment(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM RECRUITMENT ORDER BY R_DATE"):
+    for row in cursor.execute("SELECT * FROM RECRUITMENT ORDER BY R_DATE DESC"):
         table.insert('','end',values=row) 
 def fetch_events(connection,table):
     for item in table.get_children():
         table.delete(item)
     cursor = connection.cursor()
-    for row in cursor.execute("SELECT * FROM EVENT ORDER BY E_DATE"):
+    for row in cursor.execute("SELECT * FROM EVENT ORDER BY E_DATE DESC"):
         table.insert('','end',values=row)
 
 def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
@@ -160,7 +160,7 @@ def update_co_convener(connection:oracledb.Connection,data:dict):
     connection.commit()
 def delete_club(connection:oracledb.Connection,data:dict):
     with connection.cursor() as cursor:
-        cursor.callproc("CLUB_PACK.DELETE_CO_CONVENER",parameters=[data['Conv_name'].get(),data['Club_name'].get()])
+        # cursor.execute(f"DELETE FROM CO_CONVENER WHERE C_NAME = '{data['Name'].get()}'")
         cursor.execute(f"BEGIN CLUB_PACK.DELETE_CLUB('{data['Name'].get()}'); END;")
     connection.commit()
 def delete_recruitment(connection,data:dict):

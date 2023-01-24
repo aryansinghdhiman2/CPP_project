@@ -11,6 +11,7 @@ def on_enter(e):
 def on_leave(e):
    e.widget['background'] = '#fca311'
 
+oracledb.init_oracle_client() #DO NOT REMOVE this has to come before create connection
 connection=create_connection(user,password,dsn)
 
 root= Tk()
