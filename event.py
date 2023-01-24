@@ -10,6 +10,8 @@ def event_window(root,connection):
     myfont2= Font(family="Calibri",size=15,weight="bold")
     myfont3= Font(family="Calibri",size=13)
     myFont5= Font(family="Century Gothic",size=13,weight="bold")
+    myFont4= Font(family="Century Gothic",size=16,weight="bold")
+
     main_menu= Label(event_win,font=myfont,bg="#023047",text="Event Menu",fg="white")
     main_menu.place(x=0,y=0,relwidth=1,height=56)
     # manage_frame= Frame(event_win,bd=4,bg="yellow",relief=RIDGE)
@@ -74,14 +76,15 @@ def event_window(root,connection):
     del_btn= Button(btn_frame2,text="Delete",relief=RAISED,font=myFont5,fg="white",bg="#219ebc",width=7,bd=3,command=lambda:delete_event(connection,data2)).grid(row=0,column=2,padx=17,pady=10)
     clr_btn= Button(btn_frame2,text="Clear",relief=RAISED,font=myFont5,fg="white",bg="#219ebc",width=7,bd=3).grid(row=0,column=3,padx=20,pady=10)
 
+    srch_frame=Frame(display_frame,bg="#219ebc")
+    srch_frame.grid(row=0,column=0,padx=10,pady=10)
 
-
-    search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myfont1)
+    search_lbl= Label(srch_frame,text="Search by",bg="#219ebc",fg="white",font=myFont4)
     search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
-    combo_search= ttk.Combobox(display_frame,width=10,font=myfont2,state="readonly",textvariable=srch_var)
+    combo_search= ttk.Combobox(srch_frame,width=10,font=myfont2,state="readonly",textvariable=srch_var)
     combo_search['values']=("Event ID","Date","Club Name")
     combo_search.grid(row=0,column=1,pady=10,padx=10)
-    srch_entry=Entry(display_frame,font=myfont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
+    srch_entry=Entry(srch_frame,font=myfont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
     srch_entry.grid(row=0,column=2)
     
     #showall= Button(display_frame,text="Show All",font=myfont3,bd=3,relief=GROOVE,command=lamdba:fetch_events(connection,)).grid(row=0,column=4,padx=10)
@@ -103,5 +106,5 @@ def event_window(root,connection):
     event_tb.column("desc",width=190)
     event_tb.column("club",width=100)
     event_tb.pack(fill=BOTH,expand=1)
-    srch_btn=Button(display_frame,text="Search",font=myfont3,bd=3,relief=GROOVE,command=lambda:search_event(connection,event_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
-    showall= Button(display_frame,text="Show All",font=myfont3,bd=3,relief=GROOVE,command=lambda:fetch_events(connection,event_tb)).grid(row=0,column=4,padx=10)
+    srch_btn=Button(srch_frame,text="Search",font=myFont5,bd=3,relief=RAISED,bg="#219ebc",fg="white",command=lambda:search_event(connection,event_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
+    showall= Button(srch_frame,text="Show All",font=myFont5,bd=3,bg="#219ebc",fg="white",relief=RAISED,command=lambda:fetch_events(connection,event_tb)).grid(row=0,column=4,padx=10)

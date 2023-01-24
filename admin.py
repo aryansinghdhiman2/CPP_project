@@ -16,6 +16,7 @@ def admin_window(login_win,connection):
     myFont1= Font(family="Calibri",size=18,weight="bold")
     myFont2= Font(family="Calibri",size=15,weight="bold")
     myFont3= Font(family="Calibri",size=13)
+    myFont5= Font(family="Century Gothic",size=13,weight="bold")
     main_menu= Label(admin_win,font=myFont,bg="#023047",text="Admin Menu",fg="white")
     main_menu.place(x=0,y=0,relwidth=1,height=45)
 
@@ -23,9 +24,9 @@ def admin_window(login_win,connection):
     # manage_frame.place(x=20,y=100,width=450,height=460)
     def club_info():
         manage_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
-        manage_frame.place(x=0,y=100,width=480,height=540)
+        manage_frame.place(x=10,y=100,width=480,height=570)
         display_frame= Frame(admin_win,bd=4,bg="#8ecae6",relief=RIDGE)
-        display_frame.place(x=500,y=100,height=540,width=760)
+        display_frame.place(x=500,y=100,height=570,width=760)
     
         name_var= StringVar()
         conv_var= StringVar()
@@ -33,7 +34,7 @@ def admin_window(login_win,connection):
         top_frame=Frame(manage_frame,bg="#8ecae6")
         top_frame.grid(row=0,column=0)
         slct_lbl= Label(top_frame,text="Select",bg="#8ecae6",font=myFont1,fg="black")
-        slct_lbl.grid(row=0,column=0,padx=10,pady=8)
+        slct_lbl.grid(row=0,column=0,padx=20,pady=8)
         global combo_search
         combo_search= ttk.Combobox(top_frame,width=10,font=myFont3,state="readonly")
         combo_search['values']=("Club details","Co convener details")
@@ -67,16 +68,16 @@ def admin_window(login_win,connection):
         des_entry=Text(manage_frame,font=myFont3,width=20,height=4,relief=SUNKEN,bd=3)
         des_entry.grid(row=4,column=1)
 
-        btn_frame2=Frame(manage_frame,bd=4,relief=RIDGE,bg="#8ecae6")
-        btn_frame2.place(x=5,y=450,width=460)
+        btn_frame2=Frame(manage_frame,bd=4,relief=GROOVE,bg="#219ebc")
+        btn_frame2.place(x=5,y=480,width=460)
 
         data= {"Name":name_var,"Convener":conv_var,"S_media":scl_var,"Description":des_entry}
 
 
-        add_btn= Button(btn_frame2,text="Add",font=myFont3,bg="#ffffff",width=7,command=lambda:add_club(connection,data)).grid(row=0,column=0,padx=20,pady=10)
-        update_btn= Button(btn_frame2,text="Update",font=myFont3,bg="#ffffff",width=7,command=lambda:update_club(connection,data)).grid(row=0,column=1,padx=20,pady=10)
-        del_btn= Button(btn_frame2,text="Delete",font=myFont3,bg="#ffffff",width=7,command=lambda:delete_club(connection,data)).grid(row=0,column=2,padx=20,pady=10)
-        clr_btn= Button(btn_frame2,text="Clear",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=3,padx=20,pady=10)
+        add_btn= Button(btn_frame2,text="Add",font=myFont5,bg="#219ebc",width=7,fg="white",relief=RAISED,command=lambda:add_club(connection,data)).grid(row=0,column=0,padx=17,pady=2)
+        update_btn= Button(btn_frame2,text="Update",font=myFont5,bg="#219ebc",fg="white",width=7,relief=RAISED,command=lambda:update_club(connection,data)).grid(row=0,column=1,padx=17,pady=2)
+        del_btn= Button(btn_frame2,text="Delete",font=myFont5,bg="#219ebc",fg="white",width=7,relief=RAISED,command=lambda:delete_club(connection,data)).grid(row=0,column=2,padx=17,pady=2)
+        #clr_btn= Button(btn_frame2,text="Clear",font=myFont3,bg="#ffffff",width=7).grid(row=0,column=3,padx=20,pady=10)
         # search_lbl= Label(display_frame,text="Search by",bg="#8ecae6",font=myFont1)
         # search_lbl.grid(row=0,column=0,sticky="w",pady=10,padx=20)
         # combo_search= ttk.Combobox(display_frame,width=10,font=myFont2,state="readonly")
@@ -86,7 +87,7 @@ def admin_window(login_win,connection):
         # srch_entry.grid(row=0,column=2)
         # srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
-        display2_frame.place(x=10,y=65,height=450,width=735)
+        display2_frame.place(x=10,y=10,height=533,width=735)
         clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Convener","Social Media","Description"))
         #showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_info(connection,clb_info_tb)).grid(row=0,column=0,padx=20,pady=10)
 
@@ -103,7 +104,7 @@ def admin_window(login_win,connection):
         clb_info_tb.column("Social Media",width=150)
         clb_info_tb.column("Description",width=300)
         clb_info_tb.pack(fill=BOTH,expand=1)
-        showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_info(connection,clb_info_tb)).grid(row=0,column=0,padx=20,pady=10)
+        showall= Button(btn_frame2,text="Show All",font=myFont5,bd=3,relief=RAISED,fg="white",bg="#219ebc",command=lambda:fetch_club_info(connection,clb_info_tb)).grid(row=0,column=3,padx=17,pady=5)
 
 
     def co_convener(event):

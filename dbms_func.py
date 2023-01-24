@@ -73,7 +73,7 @@ def search_club(connection,table,SEARCH_STRING,TO_SEARCH):
                    row.CO_NAME,
                    row.S_MEDIA,
                    row.CLUB_DESCRIPTION
-                )
+                  )
         if(SEARCH_STRING.get() == 'Club name'):
             if(row_val[0]==TO_SEARCH.get()):
                 table.insert('','end',values=row_val)

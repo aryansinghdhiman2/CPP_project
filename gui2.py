@@ -87,9 +87,9 @@ def club_window():
         combo_search.grid(row=0,column=1,pady=10,padx=10)
         srch_entry=Entry(srch_frame,font=myFont3,width=20,relief=SUNKEN,bd=3,textvariable=srch_entry_var)
         srch_entry.grid(row=0,column=2)
-       
-        
 
+        
+    
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=70,height=450,width=1185)
         clb_meet_tb= ttk.Treeview(display2_frame,columns=("c_name","m_date","venue","desc"))
