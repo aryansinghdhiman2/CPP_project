@@ -55,17 +55,24 @@ def club_window():
         
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=70,height=450,width=1185)
-        clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Convener","Social Media","Description"))
+        clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Convener","Social Media","Description","co_name"))
         # clb_info_tb.tag_configure("evenrow",background="lightblue")
         clb_info_tb.heading("Club_Name",text="Club Name")
         clb_info_tb.heading("Convener",text="Convener")
         clb_info_tb.heading("Social Media",text="Social Media")
         clb_info_tb.heading("Description",text="Description")
+        clb_info_tb.heading("co_name",text="Co-conveners")
+        
+
+        
         clb_info_tb['show']="headings"
         clb_info_tb.column("Club_Name",width=150)
         clb_info_tb.column("Convener",width=150)
         clb_info_tb.column("Social Media",width=150)
-        clb_info_tb.column("Description",width=300)
+        clb_info_tb.column("Description",width=250)
+        clb_info_tb.column("co_name",width=50)
+        
+
         clb_info_tb.pack(fill=BOTH,expand=1)
         srch_btn=Button(srch_frame,text="Search",font=myFont5,bd=3,bg="#219ebc",fg="white",relief=RAISED,command=lambda:search_club(connection,clb_info_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
         
