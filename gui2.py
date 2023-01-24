@@ -78,7 +78,7 @@ def club_window():
         clb_info_tb.pack(fill=BOTH,expand=1)
         srch_btn=Button(srch_frame,text="Search",font=myFont5,bd=3,bg="#219ebc",fg="white",relief=RAISED,command=lambda:search_club(connection,clb_info_tb,srch_var,srch_entry_var)).grid(row=0,column=3,padx=10)
         
-        showall= Button(srch_frame,text="Show All",font=myFont5,bd=3,bg="#219ebc",fg="white",relief=RAISED,command=lambda:fetch_club_info(connection,clb_info_tb)).grid(row=0,column=4,padx=10)
+        showall= Button(srch_frame,text="Show All",font=myFont5,bd=3,bg="#219ebc",fg="white",relief=RAISED,command=lambda:fetch_full_club_info(connection,clb_info_tb)).grid(row=0,column=4,padx=10)
 
     def club_meeting():
         
