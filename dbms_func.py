@@ -1,6 +1,7 @@
-import oracledb
+
 from env import user,password,dsn
-# oracledb.init_oracle_client()
+
+import oracledb
 def create_connection(user,password,dsn):
     connection = oracledb.connect(
         user=user,
@@ -8,6 +9,8 @@ def create_connection(user,password,dsn):
         dsn=dsn)
     return connection
 
+
+# oracledb.init_oracle_client()
 # oracledb.NUMBER
 # args = ['Club']
 # conn = create_connection(user,password,dsn)
