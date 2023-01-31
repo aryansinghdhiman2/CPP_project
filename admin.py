@@ -88,7 +88,7 @@ def admin_window(login_win,connection):
         # srch_btn=Button(display_frame,text="Search",font=myFont3,bd=3,relief=GROOVE).grid(row=0,column=3,padx=10)
         display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
         display2_frame.place(x=10,y=10,height=533,width=735)
-        clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Convener","Social Media","Description"))
+        clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Convener","co_name","Social Media","Description"))
         #showall= Button(display_frame,text="Show All",font=myFont3,bd=3,relief=GROOVE,command=lambda:fetch_club_info(connection,clb_info_tb)).grid(row=0,column=0,padx=20,pady=10)
 
         # display2_frame= Frame(display_frame,bd=4,bg="#8ecae6",relief=RIDGE)
@@ -96,15 +96,17 @@ def admin_window(login_win,connection):
         #clb_info_tb= ttk.Treeview(display2_frame,columns=("Club_Name","Convener","Social Media","Description"))
         clb_info_tb.heading("Club_Name",text="Club Name")
         clb_info_tb.heading("Convener",text="Convener")
+        clb_info_tb.heading("co_name",text="Co-conveners")
         clb_info_tb.heading("Social Media",text="Social Media")
         clb_info_tb.heading("Description",text="Description")
         clb_info_tb['show']="headings"
-        clb_info_tb.column("Club_Name",width=150)
-        clb_info_tb.column("Convener",width=150)
+        clb_info_tb.column("Club_Name",width=100)
+        clb_info_tb.column("Convener",width=100)
+        clb_info_tb.column("co_name",width=150)
         clb_info_tb.column("Social Media",width=150)
-        clb_info_tb.column("Description",width=300)
+        clb_info_tb.column("Description",width=250)
         clb_info_tb.pack(fill=BOTH,expand=1)
-        showall= Button(btn_frame2,text="Show All",font=myFont5,bd=3,relief=RAISED,fg="white",bg="#219ebc",command=lambda:fetch_club_info(connection,clb_info_tb)).grid(row=0,column=3,padx=17,pady=5)
+        showall= Button(btn_frame2,text="Show All",font=myFont5,bd=3,relief=RAISED,fg="white",bg="#219ebc",command=lambda:fetch_full_club_info(connection,clb_info_tb)).grid(row=0,column=3,padx=17,pady=5)
 
 
     def co_convener(event):
@@ -303,13 +305,13 @@ def login(root,connection):
 
     user= Entry(frame,width=25,fg="black",border=0,bg="white",font=("Microsoft YaHei UI Light",11))
     user.place(x=30,y=80)
-    user.insert(0,"admin")
+    user.insert(0,"Username")
     
     Frame(frame,width=295,height=2,bg="black").place(x=25,y=107)
 
     code= Entry(frame,width=25,fg="black",border=0,bg="white",font=("Microsoft YaHei UI Light",11))
     code.place(x=30,y=150)
-    code.insert(0,"root")
+    code.insert(0,"password")
     Frame(frame,width=295,height=2,bg="black").place(x=25,y=177)
 
 
